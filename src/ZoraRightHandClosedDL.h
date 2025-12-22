@@ -1,0 +1,25 @@
+#ifndef ZORARIGHTHANDCLOSEDDL_H
+#define ZORARIGHTHANDCLOSEDDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 ZoraRightHandClosedDL_ZoraHandTex_rgba16[];
+extern u64 ZoraRightHandClosedDL_ZoraSkinTex_rgba16[];
+extern u64 ZoraRightHandClosedDL_ZoraHandThumbTex_rgba16[];
+extern Vtx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_vtx_0[6];
+extern Gfx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_tri_0[];
+extern Vtx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_vtx_1[18];
+extern Gfx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_tri_1[];
+extern Vtx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_vtx_2[6];
+extern Gfx ZoraRightHandClosedDL_ZoraRightHandClosedDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_ZoraRightHandClosedDL_ZoraHand_layerOpaque[];
+extern Gfx mat_revert_ZoraRightHandClosedDL_ZoraHand_layerOpaque[];
+extern Gfx mat_ZoraRightHandClosedDL_ZoraSkin_layerOpaque[];
+extern Gfx mat_revert_ZoraRightHandClosedDL_ZoraSkin_layerOpaque[];
+extern Gfx mat_ZoraRightHandClosedDL_ZoraHandThumb_layerOpaque[];
+extern Gfx mat_revert_ZoraRightHandClosedDL_ZoraHandThumb_layerOpaque[];
+extern Gfx ZoraRightHandClosedDL[];
+
+#endif

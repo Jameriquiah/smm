@@ -1,0 +1,55 @@
+#ifndef ELEGYSALEMSTATUEDL_H
+#define ELEGYSALEMSTATUEDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 ElegySalemStatueDL_ElegySalemSleevesTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemTunicTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemGlovesTex_i8[];
+extern u64 ElegySalemStatueDL_ElegySalemHairTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemEyesTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemMouthTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemNoseTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemBootsTex_rgba16[];
+extern u64 ElegySalemStatueDL_ElegySalemPlatformTex_rgba16[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_0[24];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_0[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_1[222];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_1[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_2[54];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_2[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_3[233];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_3[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_4[48];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_4[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_5[75];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_5[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_6[92];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_6[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_7[70];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_7[];
+extern Vtx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_vtx_8[38];
+extern Gfx ElegySalemStatueDL_ElegySalemStatueDL_mesh_layer_Opaque_tri_8[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemSleeves_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemSleeves_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemTunic_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemTunic_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemGloves_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemGloves_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemHair_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemHair_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemEyes_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemEyes_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemMouth_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemMouth_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemNose_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemNose_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemBoots_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemBoots_layerOpaque[];
+extern Gfx mat_ElegySalemStatueDL_ElegySalemPlatform_layerOpaque[];
+extern Gfx mat_revert_ElegySalemStatueDL_ElegySalemPlatform_layerOpaque[];
+extern Gfx ElegySalemStatueDL[];
+
+#endif

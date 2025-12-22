@@ -1,0 +1,20 @@
+#ifndef ZORARIGHTSWIMMINGFINDL_H
+#define ZORARIGHTSWIMMINGFINDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 ZoraRightSwimmingFinDL_ZoraFinTex_rgba16[];
+extern u64 ZoraRightSwimmingFinDL_ZoraHeadBackTex_rgba16[];
+extern Vtx ZoraRightSwimmingFinDL_ZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx ZoraRightSwimmingFinDL_ZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_0[36];
+extern Gfx ZoraRightSwimmingFinDL_ZoraRightSwimmingFinDL_mesh_layer_Opaque_tri_0[];
+extern Vtx ZoraRightSwimmingFinDL_ZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_1[44];
+extern Gfx ZoraRightSwimmingFinDL_ZoraRightSwimmingFinDL_mesh_layer_Opaque_tri_1[];
+extern Gfx mat_ZoraRightSwimmingFinDL_ZoraFin_layerOpaque[];
+extern Gfx mat_revert_ZoraRightSwimmingFinDL_ZoraFin_layerOpaque[];
+extern Gfx mat_ZoraRightSwimmingFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_revert_ZoraRightSwimmingFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx ZoraRightSwimmingFinDL[];
+
+#endif
