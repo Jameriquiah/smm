@@ -3,17 +3,20 @@
 #include "recomputils.h"
 #include "playermodelmanager_api.h"
 #include "gSalemHumanSkel.h"
-#include "LeftHandBottleDL.h"
-#include "LeftHandClosedDL.h"
-#include "RightHandClosedDL.h"
+#include "gSalemHumanHandsClosedSkel.h"
+#include "gSalemHumanLeftHandBottleSkel.h"
+#include "gSalemHumanRightHandOcarinaSkel.h"
 #include "FPSArmDL.h"
 #include "gSalemDekuSkel.h"
 #include "gSalemGoronSkel.h"
+#include "GoronLeftHandClosedDL.h"
+#include "GoronRightHandClosedDL.h"
+#include "GoronLeftHandBottleDL.h"
+#include "GoronCurledDL.h"
 #include "gSalemZoraSkel.h"
-#include "ZoraLeftHandBottleDL.h"
-#include "ZoraLeftHandClosedDL.h"
-#include "ZoraRightHandClosedDL.h"
-#include "ZoraLeftHandGuitarDL.h"
+#include "gSalemZoraLeftHandBottleSkel.h"
+#include "gSalemZoraHandsClosedSkel.h"
+#include "gSalemZoraLeftHandGuitarSkel.h"
 #include "ZoraLeftFinDL.h"
 #include "ZoraRightFinDL.h"
 #include "ZoraLeftSwimmingFinDL.h"
@@ -42,6 +45,24 @@ TexturePtr sMouthTextures[] = {
     MouthHalfTex,
     MouthOpenTex,
     MouthSmileTex,
+};
+
+TexturePtr DekuTexturesEyes[] = {
+    DekuEyesOpenTex,
+    DekuEyesHalfTex,
+    DekuEyesClosedTex,
+    DekuEyesRightTex,
+    DekuEyesLeftTex,
+    DekuEyesDownTex,
+    DekuEyesUpTex,
+    DekuEyesWinceTex,
+};
+
+TexturePtr GoronTexturesEyes[] = {
+    GoronEyesOpenTex,
+    GoronEyesHalfTex,
+    GoronEyesClosedTex,
+    GoronEyesShockedTex,
 };
 
 TexturePtr ZoraTexturesEyes[] = {
@@ -87,9 +108,10 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerHuman() {
     PlayerModelManager_setDisplayName(h, "Salem");
     PlayerModelManager_setEyesTextures(h, sFlipbookTexturesEyes);
     PlayerModelManager_setMouthTextures(h, sMouthTextures);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, LeftHandBottleDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, LeftHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, RightHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemHumanHandsClosedSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemHumanHandsClosedSkel_bone018_gLinkHumanRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemHumanLeftHandBottleSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_OCARINA_TIME, gSalemHumanRightHandOcarinaSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
     PlayerModelManager_setDisplayList(h, PMM_DL_FPS_RHAND, FPSArmDL);
 	PlayerModelManager_setDisplayList(h, PMM_DL_ELEGY_OF_EMPTINESS_SHELL_HUMAN, ElegySalemStatueDL);
 
@@ -101,6 +123,10 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerDeku() {
 
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Deku Salem");
+    PlayerModelManager_setEyesTextures(h, DekuTexturesEyes);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemDekuSkel_bone015_gLinkDekuLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemDekuSkel_bone018_gLinkDekuRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemDekuSkel_bone015_gLinkDekuLeftHandLimb_mesh_layer_Opaque);
 
     PlayerModelManager_setSkeleton(h, &gSalemDekuSkel);
 }
@@ -110,6 +136,11 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerGoron() {
 
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Goron Salem");
+    PlayerModelManager_setEyesTextures(h, GoronTexturesEyes);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, GoronLeftHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, GoronRightHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, GoronLeftHandBottleDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_CURLED, GoronCurledDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemGoronSkel);
 }
@@ -121,10 +152,10 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerZora() {
     PlayerModelManager_setDisplayName(h, "Zora Salem");
 	PlayerModelManager_setEyesTextures(h, ZoraTexturesEyes);
     PlayerModelManager_setMouthTextures(h, ZoraTexturesMouth);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, ZoraLeftHandBottleDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, ZoraLeftHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, ZoraRightHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, ZoraLeftHandGuitarDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemZoraHandsClosedSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemZoraHandsClosedSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemZoraLeftHandBottleSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, gSalemZoraLeftHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIN, ZoraLeftFinDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RFIN, ZoraRightFinDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIN_SWIM, ZoraLeftSwimmingFinDL);
@@ -140,9 +171,9 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
     PlayerModelManager_setDisplayName(h, "Fierce Deity Salem");
     PlayerModelManager_setEyesTextures(h, FDTexturesEyes);
     PlayerModelManager_setMouthTextures(h, FDTexturesMouth);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, FDLeftHandBottleDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, FDLeftHandClosedDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, FDRightHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, FDLeftHandBottleDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, FDMaskDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, FDMaskScreamDL);
 

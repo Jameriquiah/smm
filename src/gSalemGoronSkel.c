@@ -88,7 +88,7 @@ u64 gSalemGoronSkel_GoronNoseTex_rgba16[] = {
 	
 };
 
-u64 gSalemGoronSkel_GoronEyesOpenTex_rgba16[] = {
+u64 GoronEyesOpenTex[] = {
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
@@ -144,6 +144,210 @@ u64 gSalemGoronSkel_GoronEyesOpenTex_rgba16[] = {
 	0x9c0b9c0b9c0b9c0b, 0x938983076a055143, 0x4081280318050805, 0x0007000700070007, 0x0805180520033001, 0x38414901594348c1, 0x3841300130015985, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b93cb8b898307, 0x724561c5510348c1, 0x4881408140813841, 0x3841384140814903, 0x6183724583079389, 0x93cb7ac751457ac7, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93cb, 0x93cb938983097a87, 0x724569c561c36183, 0x618361c36a057ac7, 0x8b49938993cb9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93cb, 0x93c993898b898b89, 0x8b498b89938993cb, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	
+};
+
+u64 GoronEyesHalfTex[] = {
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b93c993899389, 0x8b498b498b498b49, 0x8b49938993899c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93c99389, 0x8b4983077ac77ac7, 0x7ac77ac77ac77ac7, 0x7ac77ac78b497a87, 0x59858b4993cb9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9bcb, 0x93898b4983077ac7, 0x7ac7830783098307, 0x7ac77ac76a457ac7, 0x7ac77ac772873841, 0x3001300183099c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b93c993898b49, 0x7ac783079bcba40b, 0x93898b498b498b49, 0x61c5300130017ac7, 0x7ac77ac761c53841, 0x300130018b499c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93c9, 0x93898b497ac78307, 0x8b49ac4d82c93001, 0x83098b498b498307, 0x40c3300140815103, 0x40c348c338813001, 0x300130018b899c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93c98b49, 0x7ac77ac78b498b49, 0x8b499bcb30013001, 0x59c57ac749033883, 0x40834907490759cd, 0x8b5b184530c53883, 0x304148c39c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b93c98b497ac7, 0x7ac783078b498b49, 0x8307728730013001, 0x384140c330013047, 0xb56fffffffffffff, 0xbdf1000700070805, 0x300193899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x93c98b497ac77ac7, 0x724559857ac77ac7, 0x5103300138833885, 0x38893199319d315b, 0x5261ce35ffffc5f3, 0x3153000700070805, 0x280193899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b93c9, 0x93497ac77ac77ac7, 0x48c3300159853041, 0x3001300130912895, 0x30d73119311930d7, 0x289520531811100b, 0x0007000700072885, 0x48c393899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9389, 0x7ac77ac77ac77ac7, 0x3001300130013001, 0x288f205318112011, 0x2011201120111811, 0x180f100b00090007, 0x0007000710473881, 0x61c58b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93c98307, 0x7ac77ac77ac77287, 0x3883300130032895, 0x2013100b00090009, 0x0809080908090009, 0x0007000700070007, 0x0007084740c33841, 0x7ac78b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93897ac7, 0x6205384172874083, 0x30033113311930d7, 0x2053100d00070007, 0x0007000700070007, 0x0007000700070007, 0x0007388130016a47, 0x93898b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93c98b497ac7, 0x3881300159c73001, 0x321f319d311930d7, 0x2053100d00070007, 0x0007000700070007, 0x0007000700070007, 0x40c338417ac98b49, 0x93898b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93898b497ac7, 0x38413001388531d9, 0x3a61319d31192897, 0x2013100d00070007, 0x0007000700070007, 0x0007000708052801, 0x38818b498b899349, 0x8b499bcb9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93898b497ac7, 0x6a053041315731df, 0x319b315b31192855, 0x2013080b00070007, 0x0007000700070007, 0x00070805280161c5, 0x93cb93cb93499349, 0x93899c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93898b494903, 0x384130893119311b, 0x3119311928952013, 0x1811000900070007, 0x0007000700070007, 0x2045300130418b89, 0x93cb93898b498b49, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9bcb8b493841, 0x3005289330d730d7, 0x30d7309728552013, 0x080b000700070007, 0x0007180520433881, 0x3041300130013001, 0x7ac78b498b4993c9, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93493883, 0x2807200f20532895, 0x28952853200d2007, 0x2801280128013041, 0x3001300149037ac9, 0x6a47304130013001, 0x4903934993c99c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9bcb8b49, 0x514340c338414083, 0x490348c349035985, 0x40c361c572877b09, 0x728793cb93cb93cb, 0x938b8b4972876a05, 0x8b4993899c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b93c9, 0x8b498b4983077ac7, 0x7287830993cb93cb, 0x93cb93cb93cb93cb, 0x93cb8b898b498b49, 0x8b49938993899389, 0x93c99c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9bcb93899389, 0x8b498b4993899389, 0x8b498b4983498b49, 0x8b49938993899389, 0x8b49938993899c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93c9, 0x93898b498b478307, 0x8b4993898b498b49, 0x8b478b4993899389, 0x93c99c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93899389, 0x9389938993899389, 0x93c993c99c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	
+};
+
+u64 GoronEyesClosedTex[] = {
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b93c993899389, 0x8b498b498b498b49, 0x8b49938993899c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93c99389, 0x8b4983077ac77ac7, 0x7ac77ac77ac77ac7, 0x7ac77ac78b499389, 0x93c99c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9bcb, 0x93898b4983077ac7, 0x7ac7830783098307, 0x7ac77ac77ac77ac7, 0x7ac77ac77ac77ac7, 0x724583099c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b93c993898b49, 0x7ac783079bcba40b, 0x93898b498b498b49, 0x7ac77ac77ac77ac7, 0x7ac77ac77ac76205, 0x300138419c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93c9, 0x93898b497ac78307, 0x8b49ac4dac4dac4d, 0xa40d8b498b498b49, 0x7ac77ac77ac77ac7, 0x7ac77ac76a453001, 0x300130018b899c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93c98b49, 0x7ac77ac78b498b49, 0x9389ac4dac4dac4d, 0xac4d93498b498b49, 0x8b4972877a877ac7, 0x7ac77ac730013001, 0x3001384193c99c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b93c98b497ac7, 0x7ac783078b498b49, 0x9389ac4dac4da40d, 0x93898b498b498309, 0x6205300140837ac7, 0x7ac7620538413001, 0x3001384193cb9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x93c98b497ac77ac7, 0x7ac783078b498b49, 0x8b498b498b497287, 0x83098b497ac77ac7, 0x30413001514340c3, 0x3001300130013841, 0x6a0793899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b93c9, 0x93497ac77ac77ac7, 0x7ac77ac78b498b49, 0x8b498b496a073001, 0x62057ac77ac77287, 0x3881300130013001, 0x38417a89ac4da40d, 0x93cb93899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9389, 0x7ac77ac77ac77ac7, 0x7ac77ac77ac77ac7, 0x83077ac730013001, 0x61c5514338413001, 0x3001300130013041, 0x5945a40b9bcb93cb, 0x93898b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93c98307, 0x7ac77ac77ac77ac7, 0x7ac77ac7514361c5, 0x7ac77ac730013841, 0x3841300130013001, 0x3001300130013001, 0x30017ac993cb93cb, 0x93498b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93897ac7, 0x7ac77ac77ac77ac7, 0x7ac7620530015143, 0x6a45408130013001, 0x3001300161c5ac0d, 0xac4d934b48c361c5, 0x8349938b93cb9389, 0x93898b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93c98b497ac7, 0x7ac76a4549037ac7, 0x7ac7408330013841, 0x3001300138417287, 0xa3cbac4dac4dac4d, 0xac4d9c0b93cb93cb, 0x93cb93cb93cb8b49, 0x93898b499c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93898b497ac7, 0x7ac7384130017ac7, 0x6a45300130013001, 0x3841938bac4dac4d, 0xac4dac4dac4da40b, 0x93cb93cb93cb93cb, 0x93cb93cb8b899349, 0x8b499bcb9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93898b477ac7, 0x7ac7300130013001, 0x300130014083a3cb, 0xac4dac4dac4dac4d, 0xa40d93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93499349, 0x93899c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b938983077ac7, 0x7287384130013001, 0x4903a3cbac4dac4d, 0xac4dac4d9c0b93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93898b498b49, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9bcb83075143, 0x3001300138418b49, 0xac4dac4da44da40b, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93898b498b4993c9, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b61c53001, 0x30017247ac4dac4d, 0xac4d9c0b93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb8b49, 0x9389934993c99c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b83494083, 0x6a0593898b8993cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb93cb93cb93cb, 0x938b8b498b499389, 0x8b4993899c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b93c9, 0x8b498b4993899389, 0x8b4993cb93cb93cb, 0x93cb93cb93cb93cb, 0x93cb8b898b498b49, 0x8b49938993899389, 0x93c99c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9bcb93899389, 0x8b498b4993899389, 0x8b498b4983498b49, 0x8b49938993899389, 0x8b49938993899c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93c9, 0x93898b498b478307, 0x8b4993898b498b49, 0x8b478b4993899389, 0x93c99c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93899389, 0x9389938993899389, 0x93c993c99c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	
+};
+
+u64 GoronEyesShockedTex[] = {
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b8309, 0x6a078b899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93cb, 0x728793cb9c0b9c0b, 0x9c0b6a4761c59c0b, 0x9c0b9c0b93cb3841, 0x300162059c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b93cb48c3, 0x300172479c0b9c0b, 0x5103300151858b49, 0x8b89598530013001, 0x300149039c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b518583099c0b, 0x9c0b7ac738413001, 0x304340c540c73043, 0x3043304330013885, 0x3001300138872843, 0x300140c39c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x7ac738417ac78349, 0x40c3300130013843, 0x621193dfb56baca5, 0xbdadd631f7bdffff, 0xf7bddeb5c5ad518d, 0x300140839c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93cb, 0x3881300138833001, 0x7ad9deb5ffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xfffffffffffff77b, 0x388538419c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b61c5, 0x3001300193dfdeb5, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x4909300193cb9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b72873001, 0x4085e6f7ffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x598d30018b899c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b61c5, 0x5143834b3043518d, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x7297300182c79c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b3041, 0x40c3300193dfffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x7b5d38417a879c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b83493043, 0x30437295ffffffff, 0xffffffffffffffff, 0xb56f2911104d104d, 0x2911b56fffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x7b5b300172879c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b62053001, 0x7ad7ffffffffffff, 0xffffffffffffb56f, 0x104d108f18d3108f, 0x104d104db56fffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x625538417a879c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b304140c7, 0xffffffffffffffff, 0xffffffffffff2911, 0x104d3a61a5b38cef, 0x3261104d2911ffff, 0xffffffffffffffff, 0xffffffffffffffff, 0x494b384183079c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b72c73001deb5, 0xffffffffffffffff, 0xffffffffffff104d, 0x18913aa3f7bdef7d, 0x3aa31913104dffff, 0xffffffffffffffff, 0xffffffffffffe739, 0x304340818b499c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b38433843ffff, 0xffffffffffffffff, 0xffffffffffff104d, 0x18d13aa33aa33aa3, 0x3aa3108f104dffff, 0xffffffffffffffff, 0xffffffffffff9465, 0x3001510393899c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b30017295ffff, 0xffffffffffffffff, 0xffffffffffff2911, 0x104d29993aa33aa3, 0x2999104d2911ffff, 0xffffffffffffffff, 0xffffffffffff40c9, 0x30016a0593cb9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b3001d673ffff, 0xffffffffffffffff, 0xffffffffffffb56f, 0x104d104d104d104d, 0x104d104db56fffff, 0xffffffffffffffff, 0xffffffff835b3001, 0x40817ac79c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b4909c5efffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xb56f2911104d104d, 0x2911b56fffffffff, 0xffffffffffffffff, 0xffffc5ef30433841, 0x61838b899c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b598759cff7bd, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xe6f7304538415143, 0x7ac793cb9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b830940c56211, 0xf77bffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffef3b, 0x38c7300151037a87, 0x93c99c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b93c96a054083, 0x4085ce31ffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffbdaf3885, 0x300148c172459389, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b8b496a05, 0x40833885bdadffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xffffffffffffffff, 0xef7b59d130013001, 0x3001384183099c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b93cb8b89, 0x7a87510338836213, 0xdef7ffffffffffff, 0xffffffffffffffff, 0xffffffffef7b839d, 0x3885300138413001, 0x3001300138419c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9389830761c33841, 0x3841490962116211, 0x72957b197b197b19, 0x598d5a11410b3001, 0x38414901594348c1, 0x3841300130015985, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
+	0x9c0b9c0b9c0b9c0b, 0x9c0b93cb8b898307, 0x7245598349034083, 0x3843300130013001, 0x3001384140814903, 0x6183724583079389, 0x93cb7ac751457ac7, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b93cb, 0x93cb938983097a87, 0x724569c561c36183, 0x618361c36a057ac7, 0x8b49938993cb9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
 	0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 0x9c0b9c0b9c0b9c0b, 
@@ -622,7 +826,7 @@ Vtx gSalemGoronSkel_bone007_gLinkGoronLeftShinLimb_mesh_layer_Opaque_vtx_0[10] =
 	{{ {132, -67, -167}, 0, {-864, -963}, {1, 211, 137, 255} }},
 	{{ {121, 227, -118}, 0, {-741, -998}, {226, 95, 177, 255} }},
 	{{ {126, 242, 145}, 0, {-735, -1000}, {226, 100, 72, 255} }},
-	{{ {135, -109, 223}, 0, {-881, -963}, {230, 192, 107, 255} }},
+	{{ {135, -109, 224}, 0, {-881, -963}, {230, 192, 107, 255} }},
 	{{ {1134, -65, 212}, 0, {-872, -1132}, {1, 239, 126, 255} }},
 	{{ {1012, -395, 23}, 0, {-1016, -1235}, {38, 135, 2, 255} }},
 	{{ {1128, -65, -169}, 0, {-872, -1132}, {9, 237, 131, 255} }},
@@ -643,7 +847,7 @@ Gfx gSalemGoronSkel_bone007_gLinkGoronLeftShinLimb_mesh_layer_Opaque_tri_0[] = {
 };
 
 Vtx gSalemGoronSkel_bone007_gLinkGoronLeftShinLimb_mesh_layer_Opaque_vtx_1[19] = {
-	{{ {135, -109, 223}, 0, {393, 995}, {174, 210, 85, 255} }},
+	{{ {135, -109, 224}, 0, {393, 995}, {174, 210, 85, 255} }},
 	{{ {198, -251, 22}, 0, {185, 939}, {174, 159, 2, 255} }},
 	{{ {253, -315, 21}, 0, {82, 892}, {233, 131, 1, 255} }},
 	{{ {247, -144, -225}, 0, {331, 880}, {228, 201, 145, 255} }},
@@ -653,8 +857,8 @@ Vtx gSalemGoronSkel_bone007_gLinkGoronLeftShinLimb_mesh_layer_Opaque_vtx_1[19] =
 	{{ {200, 313, 219}, 0, {1002, 876}, {207, 87, 78, 255} }},
 	{{ {126, 242, 145}, 0, {907, 1004}, {156, 61, 50, 255} }},
 	{{ {256, -111, 312}, 0, {379, 869}, {226, 208, 114, 255} }},
-	{{ {498, -249, 22}, 0, {163, 666}, {21, 131, 254, 255} }},
-	{{ {493, -93, -203}, 0, {391, 655}, {21, 207, 141, 255} }},
+	{{ {498, -249, 23}, 0, {163, 666}, {21, 131, 254, 255} }},
+	{{ {493, -93, -202}, 0, {391, 655}, {21, 207, 141, 255} }},
 	{{ {448, 325, -123}, 0, {1004, 653}, {1, 99, 177, 255} }},
 	{{ {450, 325, 204}, 0, {1004, 652}, {2, 100, 78, 255} }},
 	{{ {501, -63, 289}, 0, {434, 645}, {20, 209, 116, 255} }},
@@ -687,7 +891,7 @@ Gfx gSalemGoronSkel_bone007_gLinkGoronLeftShinLimb_mesh_layer_Opaque_tri_1[] = {
 
 Vtx gSalemGoronSkel_bone008_gLinkGoronLeftFootLimb_mesh_layer_Opaque_vtx_0[37] = {
 	{{ {53, 105, -225}, 0, {688, 695}, {250, 209, 138, 255} }},
-	{{ {680, 52, -127}, 0, {160, 530}, {66, 163, 201, 255} }},
+	{{ {680, 52, -128}, 0, {160, 530}, {66, 163, 201, 255} }},
 	{{ {272, -143, 72}, 0, {500, 467}, {25, 132, 9, 255} }},
 	{{ {308, 403, -275}, 0, {479, 953}, {2, 76, 154, 255} }},
 	{{ {-277, 198, -197}, 0, {964, 784}, {192, 166, 192, 255} }},
@@ -700,7 +904,7 @@ Vtx gSalemGoronSkel_bone008_gLinkGoronLeftFootLimb_mesh_layer_Opaque_vtx_0[37] =
 	{{ {-277, 202, 257}, 0, {924, 794}, {184, 164, 50, 255} }},
 	{{ {-337, 405, 242}, 0, {978, 975}, {160, 66, 51, 255} }},
 	{{ {272, -143, 72}, 0, {460, 480}, {25, 132, 9, 255} }},
-	{{ {680, 52, -127}, 0, {121, 544}, {66, 163, 201, 255} }},
+	{{ {680, 52, -128}, 0, {121, 544}, {66, 163, 201, 255} }},
 	{{ {-277, 202, 257}, 0, {59, 823}, {184, 164, 50, 255} }},
 	{{ {-337, 399, -190}, 0, {726, 958}, {168, 63, 190, 255} }},
 	{{ {-277, 198, -197}, 0, {729, 814}, {192, 166, 192, 255} }},
@@ -1257,16 +1461,16 @@ Gfx gSalemGoronSkel_bone013_gLinkGoronLeftShoulderLimb_mesh_layer_Opaque_tri_1[]
 };
 
 Vtx gSalemGoronSkel_bone014_gLinkGoronLeftForearmLimb_mesh_layer_Opaque_vtx_0[16] = {
-	{{ {103, 173, -203}, 0, {240, -144}, {250, 79, 157, 255} }},
+	{{ {103, 173, -203}, 0, {240, -144}, {249, 79, 157, 255} }},
 	{{ {106, 258, 154}, 0, {240, -144}, {7, 117, 50, 255} }},
 	{{ {53, -91, 407}, 0, {240, -144}, {235, 243, 125, 255} }},
 	{{ {118, -384, 145}, 0, {240, -144}, {240, 132, 23, 255} }},
 	{{ {84, -187, -233}, 0, {240, -144}, {232, 191, 150, 255} }},
-	{{ {1521, -140, -126}, 0, {240, 368}, {44, 197, 152, 255} }},
-	{{ {1521, 56, -108}, 0, {240, 368}, {47, 77, 167, 255} }},
-	{{ {1521, 109, 116}, 0, {240, 368}, {48, 109, 43, 255} }},
-	{{ {1521, -69, 238}, 0, {240, 368}, {49, 250, 117, 255} }},
-	{{ {1521, -240, 91}, 0, {240, 368}, {46, 140, 25, 255} }},
+	{{ {1621, -140, -126}, 0, {240, 368}, {58, 200, 158, 255} }},
+	{{ {1621, 56, -108}, 0, {240, 368}, {61, 73, 171, 255} }},
+	{{ {1621, 109, 116}, 0, {240, 368}, {61, 104, 41, 255} }},
+	{{ {1621, -69, 238}, 0, {240, 368}, {62, 251, 111, 255} }},
+	{{ {1621, -240, 91}, 0, {240, 368}, {59, 146, 24, 255} }},
 	{{ {1730, -69, 35}, 0, {240, 368}, {127, 252, 253, 255} }},
 	{{ {1946, 281, 104}, 0, {240, -144}, {4, 123, 30, 255} }},
 	{{ {1938, 165, -127}, 0, {240, -144}, {241, 82, 160, 255} }},
@@ -1419,16 +1623,16 @@ Gfx gSalemGoronSkel_bone016_gLinkGoronRightShoulderLimb_mesh_layer_Opaque_tri_1[
 };
 
 Vtx gSalemGoronSkel_bone017_gLinkGoronRightForearmLimb_mesh_layer_Opaque_vtx_0[16] = {
-	{{ {101, 173, 203}, 0, {240, -144}, {250, 79, 99, 255} }},
+	{{ {101, 173, 203}, 0, {240, -144}, {249, 79, 99, 255} }},
 	{{ {82, -187, 233}, 0, {240, -144}, {232, 191, 106, 255} }},
-	{{ {117, -384, -145}, 0, {240, -144}, {241, 132, 233, 255} }},
-	{{ {52, -91, -407}, 0, {240, -144}, {236, 243, 131, 255} }},
+	{{ {117, -384, -145}, 0, {240, -144}, {240, 132, 233, 255} }},
+	{{ {52, -91, -407}, 0, {240, -144}, {235, 243, 131, 255} }},
 	{{ {104, 258, -154}, 0, {240, -144}, {7, 117, 206, 255} }},
-	{{ {1519, 109, -116}, 0, {240, 368}, {48, 109, 213, 255} }},
-	{{ {1519, 56, 108}, 0, {240, 368}, {47, 77, 89, 255} }},
-	{{ {1519, -140, 126}, 0, {240, 368}, {44, 197, 104, 255} }},
-	{{ {1519, -240, -91}, 0, {240, 368}, {46, 140, 231, 255} }},
-	{{ {1519, -69, -238}, 0, {240, 368}, {49, 250, 139, 255} }},
+	{{ {1619, 109, -116}, 0, {240, 368}, {61, 104, 215, 255} }},
+	{{ {1619, 56, 108}, 0, {240, 368}, {61, 73, 85, 255} }},
+	{{ {1619, -140, 126}, 0, {240, 368}, {58, 200, 98, 255} }},
+	{{ {1619, -240, -91}, 0, {240, 368}, {59, 146, 232, 255} }},
+	{{ {1619, -69, -238}, 0, {240, 368}, {62, 251, 145, 255} }},
 	{{ {1728, -69, -35}, 0, {240, 368}, {127, 252, 3, 255} }},
 	{{ {1938, 165, 127}, 0, {240, -144}, {241, 82, 96, 255} }},
 	{{ {1946, 281, -104}, 0, {240, -144}, {4, 123, 226, 255} }},
@@ -1861,11 +2065,11 @@ Gfx gSalemGoronSkel_bone020_gLinkGoronTorsoLimb_mesh_layer_Opaque_tri_6[] = {
 };
 
 Gfx mat_gSalemGoronSkel_GoronHairLine_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronHairLineTex_rgba16),
@@ -1878,16 +2082,16 @@ Gfx mat_gSalemGoronSkel_GoronHairLine_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronHairLine_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronLeggings_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER | G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_TEXTURE_GEN | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(960, 960, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 33, 33, 33, 255),
 	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronLeggingsTex_i8),
@@ -1900,16 +2104,16 @@ Gfx mat_gSalemGoronSkel_GoronLeggings_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronLeggings_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronBootTex_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronBootTex_rgba16),
@@ -1922,16 +2126,16 @@ Gfx mat_gSalemGoronSkel_GoronBootTex_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronBootTex_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronMouthTex_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronMouthTex_rgba16),
@@ -1944,16 +2148,16 @@ Gfx mat_gSalemGoronSkel_GoronMouthTex_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronMouthTex_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronSkin_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronSkinTex_rgba16),
@@ -1966,16 +2170,16 @@ Gfx mat_gSalemGoronSkel_GoronSkin_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronSkin_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronNose_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronNoseTex_rgba16),
@@ -1988,19 +2192,19 @@ Gfx mat_gSalemGoronSkel_GoronNose_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronNose_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronEyes_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronEyesOpenTex_rgba16),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0x08000000),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 2047, 128),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
@@ -2010,16 +2214,16 @@ Gfx mat_gSalemGoronSkel_GoronEyes_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronEyes_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronHair_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronHairTex_rgba16),
@@ -2032,16 +2236,16 @@ Gfx mat_gSalemGoronSkel_GoronHair_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronHair_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronHairPurple_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronHairPurpleTex_rgba16),
@@ -2054,16 +2258,16 @@ Gfx mat_gSalemGoronSkel_GoronHairPurple_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronHairPurple_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronTattoo_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronTattooTex_rgba16),
@@ -2076,16 +2280,16 @@ Gfx mat_gSalemGoronSkel_GoronTattoo_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronTattoo_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronGloves_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronGlovesTex_i8),
@@ -2098,16 +2302,16 @@ Gfx mat_gSalemGoronSkel_GoronGloves_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronGloves_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronHand_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronHandTex_rgba16),
@@ -2120,16 +2324,16 @@ Gfx mat_gSalemGoronSkel_GoronHand_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronHand_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronBelly_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronBellyTex_rgba16),
@@ -2142,16 +2346,16 @@ Gfx mat_gSalemGoronSkel_GoronBelly_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronBelly_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronBack_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronBackTex_rgba16),
@@ -2164,16 +2368,16 @@ Gfx mat_gSalemGoronSkel_GoronBack_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronBack_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronBreast_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronBreastTex_rgba16),
@@ -2186,16 +2390,16 @@ Gfx mat_gSalemGoronSkel_GoronBreast_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronBreast_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemGoronSkel_GoronClothing_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_CULL_BACK | G_SHADE | G_FOG | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADING_SMOOTH | G_FOG | G_SHADE | G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_TC_FILT | G_CK_NONE | G_PM_NPRIMITIVE | G_TT_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TP_PERSP | G_AD_NOISE | G_TL_TILE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_TT_NONE | G_TF_BILERP | G_TP_PERSP | G_TD_CLAMP | G_PM_NPRIMITIVE | G_CD_MAGICSQ | G_CYC_2CYCLE | G_TC_FILT | G_AD_NOISE | G_CK_NONE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_ZS_PIXEL | G_AC_NONE | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemGoronSkel_GoronClothingTex_rgba16),
@@ -2208,7 +2412,7 @@ Gfx mat_gSalemGoronSkel_GoronClothing_layerOpaque[] = {
 
 Gfx mat_revert_gSalemGoronSkel_GoronClothing_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF2),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL | G_AC_NONE | G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayList(),
 };
 
