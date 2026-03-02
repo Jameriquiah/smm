@@ -30,6 +30,7 @@
 #include "gSalemZoraShieldDL.h"
 #include "gSalemZoraMagicBarrierDL.h"
 #include "gSalemFierceDeitySkel.h"
+#include "gSalemFierceDeityHairSkel.h"
 #include "gSalemFierceDeityHandSkel.h"
 #include "FDMaskDL.h"
 #include "FDMaskScreamDL.h"
