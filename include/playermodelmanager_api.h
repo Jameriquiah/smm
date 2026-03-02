@@ -5,7 +5,7 @@ typedef unsigned long PlayerModelManagerHandle;
 
 // Used for keeping compatibility between versions
 // DO NOT EDIT
-#define PMM_API_VERSION 2UL
+#define PMM_API_VERSION 3UL
 
 #define YAZMT_PMM_MOD_NAME "yazmt_mm_playermodelmanager"
 
@@ -13,10 +13,27 @@ typedef unsigned long PlayerModelManagerHandle;
 #define PMM_MAX_AUTHOR_NAME_LENGTH 64
 #define PMM_MAX_DISPLAY_NAME_LENGTH 32
 
-typedef enum {
+// NOTE: If a DL is prefixed with PMM_DL_OPT_, specifying it is OPTIONAL,
+// and a fallback will be used if available.
+// (e.g. not specifying a DL for PMM_DL_OPT_RHAND_OCARINA will result in
+// the DL registered to PMM_DL_RHAND being used)
+
+// Swords:
+//      1: Kokiri Sword
+//      2: Razor Sword
+//      3: Gilded Sword
+//      4: Fierce Deity's Sword
+//      5: Great Fairy Sword
+
+// Shields:
+//      1: Deku Shield
+//      2: Hero's Shield
+//      3: Mirror Shield
+
+typedef enum PlayerModelManagerDisplayListId {
 
     // Main skeleton DLs
-    PMM_DL_WAIST,
+    PMM_DL_WAIST = 0,
     PMM_DL_RTHIGH,
     PMM_DL_RSHIN,
     PMM_DL_RFOOT,
@@ -36,19 +53,40 @@ typedef enum {
     PMM_DL_TORSO,
 
     // Other hand DLs
-    PMM_DL_LFIST,
-    PMM_DL_LHAND_BOTTLE,
-    PMM_DL_LHAND_GUITAR,
-    PMM_DL_RFIST,
+    PMM_DL_OPT_LFIST,
+    PMM_DL_OPT_LHAND_BOTTLE,
+    PMM_DL_OPT_LHAND_GUITAR,
+    PMM_DL_OPT_LFIST_ITEM = 235,
+    PMM_DL_OPT_LFIST_SWORD,
+    PMM_DL_OPT_LFIST_SWORD1,
+    PMM_DL_OPT_LFIST_SWORD2,
+    PMM_DL_OPT_LFIST_SWORD3,
+    PMM_DL_OPT_LFIST_SWORD_TWO_HANDED,
+    PMM_DL_OPT_LFIST_SWORD4,
+    PMM_DL_OPT_LFIST_SWORD5,
+    PMM_DL_OPT_LFIST_DEKU_STICK,
+    PMM_DL_OPT_LFIST_HAMMER,
+    PMM_DL_OPT_LFIST_BOOMERANG,
+    PMM_DL_OPT_RFIST = 21,
+    PMM_DL_OPT_RHAND_OCARINA = 246,
+    PMM_DL_OPT_RHAND_OCARINA_FAIRY,
+    PMM_DL_OPT_RHAND_OCARINA_TIME,
+    PMM_DL_OPT_RFIST_ITEM,
+    PMM_DL_OPT_RFIST_SHIELD,
+    PMM_DL_OPT_RFIST_SHIELD1,
+    PMM_DL_OPT_RFIST_SHIELD2,
+    PMM_DL_OPT_RFIST_SHIELD3,
+    PMM_DL_OPT_RFIST_SWORD_TWO_HANDED,
+    PMM_DL_OPT_RFIST_SWORD4,
+    PMM_DL_OPT_RFIST_SWORD5,
+    PMM_DL_OPT_RFIST_DEKU_STICK,
+    PMM_DL_OPT_RFIST_HAMMER,
+    PMM_DL_OPT_RFIST_HOOKSHOT,
+    PMM_DL_OPT_RFIST_LONGSHOT,
+    PMM_DL_OPT_RFIST_BOW,
+    PMM_DL_OPT_RFIST_SLINGSHOT,
 
-    // Swords:
-    //      1: Kokiri Sword
-    //      2: Razor Sword
-    //      3: Master Sword / Gilded Sword
-    //      4: Giant's Knife / Biggoron Sword / Fierce Deity's Sword
-    //      5: Great Fairy Sword
-
-    PMM_DL_SWORD1_SHEATH,
+    PMM_DL_SWORD1_SHEATH = 22,
     PMM_DL_SWORD2_SHEATH,
     PMM_DL_SWORD3_SHEATH,
     PMM_DL_SWORD4_SHEATH,
@@ -66,39 +104,84 @@ typedef enum {
     PMM_DL_SWORD4_BLADE_FRAGMENT,
     PMM_DL_SWORD5_BLADE,
 
-    PMM_DL_SHIELD1,     // Deku Shield
-    PMM_DL_SHIELD2,     // Hylian Shield / Hero's Shield
-    PMM_DL_SHIELD3,     // Mirror Shield
-    PMM_DL_SHIELD3_RAY, // Mirror Shield Projection
+    PMM_DL_SHIELD1,
+    PMM_DL_SHIELD2,
+    PMM_DL_SHIELD3,
+    // Mirror Shield projection flat image DL
+    // should be axis-aligned
+    PMM_DL_SHIELD3_RAY,
+    PMM_DL_SHIELD3_RAY_BEAM = 229, // Mirror Shield Reflective Beam DL
 
     // Items
-    PMM_DL_BOTTLE_GLASS,
+    PMM_DL_BOTTLE_GLASS = 43,
     PMM_DL_BOTTLE_CONTENTS,
     PMM_DL_OCARINA_FAIRY,
     PMM_DL_OCARINA_TIME,
     PMM_DL_DEKU_STICK,
-    PMM_DL_BOW, // Also has a first person variant
-    PMM_DL_BOW_STRING,
+    PMM_DL_BOW,
+    PMM_DL_OPT_FPS_BOW = 226,
+    PMM_DL_BOW_STRING = 49,
     PMM_DL_BOW_ARROW,
     PMM_DL_SLINGSHOT,
-    PMM_DL_SLINGSHOT_STRING,
+    PMM_DL_OPT_FPS_SLINGSHOT = 227,
+    PMM_DL_SLINGSHOT_STRING = 52,
     PMM_DL_HOOKSHOT,
     PMM_DL_HOOKSHOT_CHAIN,
     PMM_DL_HOOKSHOT_HOOK,
     PMM_DL_HOOKSHOT_RETICLE,
-    PMM_DL_FPS_HOOKSHOT,
-    PMM_DL_BOOMERANG,        // Boomerang model while held in hand
+    PMM_DL_OPT_FPS_HOOKSHOT,
+    PMM_DL_OPT_LONGSHOT = 230,
+    PMM_DL_OPT_LONGSHOT_CHAIN,
+    PMM_DL_OPT_LONGSHOT_HOOK,
+    PMM_DL_OPT_LONGSHOT_RETICLE,
+    PMM_DL_OPT_FPS_LONGSHOT,
+    PMM_DL_BOOMERANG = 58,   // Boomerang model while held in hand
     PMM_DL_BOOMERANG_FLYING, // Boomerang model after being thrown
     PMM_DL_HAMMER,
+    PMM_DL_BOMB_BODY_2D = 291,
+    PMM_DL_BOMB_BODY_3D,
+    PMM_DL_BOMB_CAP,
+    PMM_DL_BOMBCHU = 297,
 
     // First Person
-    PMM_DL_FPS_LFOREARM,
-    PMM_DL_FPS_LHAND,
-    PMM_DL_FPS_RFOREARM,
-    PMM_DL_FPS_RHAND,
+    PMM_DL_OPT_FPS_LSHOULDER = 263,
+    PMM_DL_OPT_FPS_LSHOULDER_HOOKSHOT,
+    PMM_DL_OPT_FPS_LSHOULDER_LONGSHOT,
+    PMM_DL_OPT_FPS_LSHOULDER_BOW,
+    PMM_DL_OPT_FPS_LSHOULDER_SLINGSHOT,
+
+    PMM_DL_OPT_FPS_LFOREARM = 61,
+    PMM_DL_OPT_FPS_LFOREARM_HOOKSHOT = 268,
+    PMM_DL_OPT_FPS_LFOREARM_LONGSHOT,
+    PMM_DL_OPT_FPS_LFOREARM_BOW,
+    PMM_DL_OPT_FPS_LFOREARM_SLINGSHOT,
+
+    PMM_DL_OPT_FPS_LHAND = 62,
+    PMM_DL_OPT_FPS_LHAND_HOOKSHOT = 272,
+    PMM_DL_OPT_FPS_LHAND_LONGSHOT,
+    PMM_DL_OPT_FPS_LHAND_BOW,
+    PMM_DL_OPT_FPS_LHAND_SLINGSHOT,
+
+    PMM_DL_OPT_FPS_RSHOULDER,
+    PMM_DL_OPT_FPS_RSHOULDER_HOOKSHOT,
+    PMM_DL_OPT_FPS_RSHOULDER_LONGSHOT,
+    PMM_DL_OPT_FPS_RSHOULDER_BOW,
+    PMM_DL_OPT_FPS_RSHOULDER_SLINGSHOT,
+
+    PMM_DL_OPT_FPS_RFOREARM = 63,
+    PMM_DL_OPT_FPS_RFOREARM_HOOKSHOT = 281,
+    PMM_DL_OPT_FPS_RFOREARM_LONGSHOT,
+    PMM_DL_OPT_FPS_RFOREARM_BOW,
+    PMM_DL_OPT_FPS_RFOREARM_SLINGSHOT,
+
+    PMM_DL_OPT_FPS_RHAND = 64,
+    PMM_DL_OPT_FPS_RHAND_HOOKSHOT = 285,
+    PMM_DL_OPT_FPS_RHAND_LONGSHOT,
+    PMM_DL_OPT_FPS_RHAND_BOW,
+    PMM_DL_OPT_FPS_RHAND_SLINGSHOT,
 
     // Masks
-    PMM_DL_MASK_SKULL,
+    PMM_DL_MASK_SKULL = 65,
     PMM_DL_MASK_SPOOKY,
     PMM_DL_MASK_GERUDO,
     PMM_DL_MASK_TRUTH,
@@ -122,24 +205,24 @@ typedef enum {
     PMM_DL_MASK_BLAST_COOLING_DOWN,
     PMM_DL_MASK_SCENTS,
     PMM_DL_MASK_GIANT,
-    PMM_DL_MASK_DEKU,         // Only used if model is Deku
-    PMM_DL_MASK_GORON,        // Only used if model is Goron
-    PMM_DL_MASK_ZORA,         // Only used if model is Zora
-    PMM_DL_MASK_FIERCE_DEITY, // Only used if model is Fierce Deity
-    PMM_DL_MASK_DEKU_SCREAM,  // Only used if model is Deku
-    PMM_DL_MASK_GORON_SCREAM, // Only used if model is Goron
-    PMM_DL_MASK_ZORA_SCREAM,  // Only used if model is Zora
-    PMM_DL_MASK_FIERCE_DEITY_SCREAM,
+    PMM_DL_MASK_DEKU,                // Only used if model is Deku
+    PMM_DL_MASK_GORON,               // Only used if model is Goron
+    PMM_DL_MASK_ZORA,                // Only used if model is Zora
+    PMM_DL_MASK_FIERCE_DEITY,        // Only used if model is Fierce Deity
+    PMM_DL_MASK_DEKU_SCREAM,         // Only used if model is Deku
+    PMM_DL_MASK_GORON_SCREAM,        // Only used if model is Goron
+    PMM_DL_MASK_ZORA_SCREAM,         // Only used if model is Zora
+    PMM_DL_MASK_FIERCE_DEITY_SCREAM, // Only used if model is Fierce Deity
 
     // Elegy of Emptiness statues
-    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_HUMAN, // Only used if model is human
-    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_DEKU,  // Only used if model is Deku
-    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_GORON, // Only used if model is Goron
-    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_ZORA,  // Only used if model is Zora
-    // PMM_DL_ELEGY_OF_EMPTINESS_SHELL_FIERCE_DEITY also exists
+    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_HUMAN,              // Only used if model is human
+    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_DEKU,               // Only used if model is Deku
+    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_GORON,              // Only used if model is Goron
+    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_ZORA,               // Only used if model is Zora
+    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_FIERCE_DEITY = 228, // Only used if model is Fierce Deity
 
     // Strength Upgrades (OoT)
-    PMM_DL_BRACELET_LFOREARM,
+    PMM_DL_BRACELET_LFOREARM = 101,
     PMM_DL_GAUNTLET_LFOREARM,
     PMM_DL_GAUNTLET_LHAND,
     PMM_DL_GAUNTLET_LFIST,
@@ -153,8 +236,10 @@ typedef enum {
     PMM_DL_BOOT_LHOVER,
     PMM_DL_BOOT_RHOVER,
 
-    // Deku Instrument / Pipes
+    // Deku Link shield
     PMM_DL_DEKU_GUARD,
+
+    // Deku Instrument / Pipes
     PMM_DL_PIPE_MOUTH,
     PMM_DL_PIPE_RIGHT,
     PMM_DL_PIPE_UP,
@@ -171,7 +256,7 @@ typedef enum {
     PMM_DL_FLOWER_PROPELLER_OPEN,
     PMM_DL_FLOWER_CENTER_OPEN,
 
-    // Deku Pad DLs
+    // Burrowed into a Deku Flower models
     PMM_DL_PAD_WOOD,
     PMM_DL_PAD_GRASS,
     PMM_DL_PAD_OPENING,
@@ -291,7 +376,7 @@ typedef enum {
     PMM_DL_SHIM_SWORD3_PEDESTAL,         // Master Sword rotated to be inside pedestal
     PMM_DL_SHIM_SWORD3_PEDESTAL_GRABBED, // Master Sword rotated for grabbed from pedestal
 
-    // Left First + Items
+    // Left Fist + Items
     PMM_DL_SHIM_LFIST_HAMMER,
     PMM_DL_SHIM_LFIST_BOOMERANG,
     PMM_DL_SHIM_RFIST_BOW,
@@ -299,30 +384,37 @@ typedef enum {
     // Right Fist + Items
     PMM_DL_SHIM_RFIST_SLINGSHOT,
     PMM_DL_SHIM_RFIST_HOOKSHOT,
-    PMM_DL_SHIM_RHAND_OCARINA_FAIRY,
+    PMM_DL_SHIM_RFIST_LONGSHOT = 289,
+    PMM_DL_SHIM_RHAND_OCARINA_FAIRY = 219,
     PMM_DL_SHIM_RHAND_OCARINA_TIME,
 
     // First Person Right Hand + Items
     PMM_DL_SHIM_FPS_RHAND_BOW,
     PMM_DL_SHIM_FPS_RHAND_SLINGSHOT,
     PMM_DL_SHIM_FPS_RHAND_HOOKSHOT,
+    PMM_DL_SHIM_FPS_RHAND_LONGSHOT = 290,
 
     // Deku Link flower propellers
-    PMM_DL_SHIM_CENTER_FLOWER_PROPELLER_OPEN,
+    PMM_DL_SHIM_CENTER_FLOWER_PROPELLER_OPEN = 224,
     PMM_DL_SHIM_CENTER_FLOWER_PROPELLER_CLOSED,
 
-    // First Person Bow
-    PMM_DL_FPS_BOW,
-
-    // First Person Slingshot
-    PMM_DL_FPS_SLINGSHOT,
-
-    // Elegy of Emptiness Statue (Fierce Deity)
-    PMM_DL_ELEGY_OF_EMPTINESS_SHELL_FIERCE_DEITY, // Only used if model is Fierce Deity
-
-    PMM_DL_MAX
+    PMM_DL_MAX = 298
 } PlayerModelManagerDisplayListId;
 
+// Keep these defines for backwards compatibility
+#define PMM_DL_RFIST PMM_DL_OPT_RFIST
+#define PMM_DL_LFIST PMM_DL_OPT_LFIST
+#define PMM_DL_LHAND_BOTTLE PMM_DL_OPT_LHAND_BOTTLE
+#define PMM_DL_LHAND_GUITAR PMM_DL_OPT_LHAND_GUITAR
+#define PMM_DL_FPS_HOOKSHOT PMM_DL_OPT_FPS_HOOKSHOT
+#define PMM_DL_FPS_BOW PMM_DL_OPT_FPS_BOW
+#define PMM_DL_FPS_SLINGSHOT PMM_DL_OPT_FPS_SLINGSHOT
+#define PMM_DL_FPS_LFOREARM PMM_DL_OPT_FPS_LFOREARM
+#define PMM_DL_FPS_LHAND PMM_DL_OPT_FPS_LHAND
+#define PMM_DL_FPS_RFOREARM PMM_DL_OPT_FPS_RFOREARM
+#define PMM_DL_FPS_RHAND PMM_DL_OPT_FPS_RHAND
+
+// Other helper defines
 #define PMM_DL_SWORD_KOKIRI_HILT PMM_DL_SWORD1_HILT
 #define PMM_DL_SWORD_KOKIRI_BLADE PMM_DL_SWORD1_BLADE
 #define PMM_DL_SWORD_KOKIRI_SHEATH PMM_DL_SWORD1_SHEATH
@@ -341,10 +433,14 @@ typedef enum {
 #define PMM_DL_SWORD_FIERCE_DEITY_HILT PMM_DL_SWORD4_HILT
 #define PMM_DL_SWORD_FIERCE_DEITY_BLADE PMM_DL_SWORD4_BLADE
 
+#define PMM_DL_SHIELD_DEKU PMM_DL_SHIELD1
+
 #define PMM_DL_SHIELD_HERO PMM_DL_SHIELD2
+#define PMM_DL_SHIELD_HYLIAN PMM_DL_SHIELD2
 
 #define PMM_DL_SHIELD_MIRROR PMM_DL_SHIELD3
 #define PMM_DL_SHIELD_MIRROR_RAY PMM_DL_SHIELD3_RAY
+#define PMM_DL_SHIELD_MIRROR_RAY_BEAM PMM_DL_SHIELD3_RAY_BEAM
 
 typedef enum {
     PMM_MTX_SWORD1_BACK,
@@ -368,10 +464,12 @@ typedef enum {
 #define PMM_MTX_SWORD_RAZOR_BACK PMM_MTX_SWORD2_BACK
 #define PMM_MTX_SWORD_GILDED_BACK PMM_MTX_SWORD3_BACK
 
+#define PMM_MTX_SHIELD_DEKU_BACK PMM_MTX_SHIELD1_BACK
 #define PMM_MTX_SHIELD_HERO_BACK PMM_MTX_SHIELD2_BACK
+#define PMM_MTX_SHIELD_HYLIAN_BACK PMM_MTX_SHIELD2_BACK
 #define PMM_MTX_SHIELD_MIRROR_BACK PMM_MTX_SHIELD3_BACK
 
-typedef enum {
+typedef enum PlayerModelManagerModelType {
     PMM_MODEL_TYPE_NONE,
     PMM_MODEL_TYPE_CHILD,
     PMM_MODEL_TYPE_ADULT,
@@ -379,10 +477,70 @@ typedef enum {
     PMM_MODEL_TYPE_GORON,
     PMM_MODEL_TYPE_ZORA,
     PMM_MODEL_TYPE_FIERCE_DEITY,
+    PMM_MODEL_TYPE_SWORD1,
+    PMM_MODEL_TYPE_SWORD2,
+    PMM_MODEL_TYPE_SWORD3,
+    PMM_MODEL_TYPE_SWORD4,
+    PMM_MODEL_TYPE_SWORD5,
+    PMM_MODEL_TYPE_SHIELD1,
+    PMM_MODEL_TYPE_SHIELD2,
+    PMM_MODEL_TYPE_SHIELD3,
+    PMM_MODEL_TYPE_HOOKSHOT,
+    PMM_MODEL_TYPE_BOW,
+    PMM_MODEL_TYPE_SLINGSHOT,
+    PMM_MODEL_TYPE_BOTTLE,
+    PMM_MODEL_TYPE_OCARINA_FAIRY,
+    PMM_MODEL_TYPE_OCARINA_TIME,
+    PMM_MODEL_TYPE_BOOMERANG,
+    PMM_MODEL_TYPE_HAMMER,
+    PMM_MODEL_TYPE_DEKU_STICK,
+    PMM_MODEL_TYPE_PIPES,
+    PMM_MODEL_TYPE_DRUMS,
+    PMM_MODEL_TYPE_GUITAR,
+    PMM_MODEL_TYPE_MASK_SKULL,
+    PMM_MODEL_TYPE_MASK_SPOOKY,
+    PMM_MODEL_TYPE_MASK_GERUDO,
+    PMM_MODEL_TYPE_MASK_TRUTH,
+    PMM_MODEL_TYPE_MASK_KAFEIS_MASK,
+    PMM_MODEL_TYPE_MASK_ALL_NIGHT,
+    PMM_MODEL_TYPE_MASK_BUNNY,
+    PMM_MODEL_TYPE_MASK_KEATON,
+    PMM_MODEL_TYPE_MASK_GARO,
+    PMM_MODEL_TYPE_MASK_ROMANI,
+    PMM_MODEL_TYPE_MASK_CIRCUS_LEADER,
+    PMM_MODEL_TYPE_MASK_COUPLE,
+    PMM_MODEL_TYPE_MASK_POSTMAN,
+    PMM_MODEL_TYPE_MASK_GREAT_FAIRY,
+    PMM_MODEL_TYPE_MASK_GIBDO,
+    PMM_MODEL_TYPE_MASK_DON_GERO,
+    PMM_MODEL_TYPE_MASK_KAMARO,
+    PMM_MODEL_TYPE_MASK_CAPTAIN,
+    PMM_MODEL_TYPE_MASK_STONE,
+    PMM_MODEL_TYPE_MASK_BREMEN,
+    PMM_MODEL_TYPE_MASK_BLAST,
+    PMM_MODEL_TYPE_MASK_SCENTS,
+    PMM_MODEL_TYPE_MASK_GIANT,
+    PMM_MODEL_TYPE_MASK_DEKU,
+    PMM_MODEL_TYPE_MASK_GORON,
+    PMM_MODEL_TYPE_MASK_ZORA,
+    PMM_MODEL_TYPE_MASK_FIERCE_DEITY,
+    PMM_MODEL_TYPE_MODEL_PACK,
+    PMM_MODEL_TYPE_BOMB,
+    PMM_MODEL_TYPE_BOMBCHU,
     PMM_MODEL_TYPE_MAX
 } PlayerModelManagerModelType;
 
-typedef enum {
+#define PMM_MODEL_TYPE_SWORD_KOKIRI PMM_MODEL_TYPE_SWORD1
+#define PMM_MODEL_TYPE_SWORD_RAZOR PMM_MODEL_TYPE_SWORD2
+#define PMM_MODEL_TYPE_SWORD_GILDED PMM_MODEL_TYPE_SWORD3
+#define PMM_MODEL_TYPE_SWORD_FIERCE_DIETY PMM_MODEL_TYPE_SWORD4
+#define PMM_MODEL_TYPE_SWORD_GREAT_FAIRY PMM_MODEL_TYPE_SWORD5
+#define PMM_MODEL_TYPE_SHIELD_DEKU PMM_MODEL_TYPE_SHIELD1
+#define PMM_MODEL_TYPE_SHIELD_HYLIAN PMM_MODEL_TYPE_SHIELD2
+#define PMM_MODEL_TYPE_SHIELD_HERO PMM_MODEL_TYPE_SHIELD2
+#define PMM_MODEL_TYPE_SHIELD_MIRROR PMM_MODEL_TYPE_SHIELD3
+
+typedef enum PlayerModelManagerModelEvent {
     PMM_EVENT_MODEL_APPLIED,
     PMM_EVENT_MODEL_REMOVED,
 } PlayerModelManagerModelEvent;
@@ -402,12 +560,12 @@ typedef void PlayerModelManagerEventHandler(PlayerModelManagerHandle handle, Pla
 // There is a maximum length of 64 characters.
 //
 // This function can only be used during the PlayerModelManager_onRegisterModels event. Otherwise, an invalid handle will be returned.
-#define PLAYERMODELMANAGER_REGISTER_MODEL(internalName, modelType) PlayerModelManager_registerModel(PMM_API_VERSION, internalName, modelType)
 RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, PlayerModelManagerHandle PlayerModelManager_registerModel(unsigned long apiVersion, const char *internalName, PlayerModelManagerModelType modelType));
+#define PLAYERMODELMANAGER_REGISTER_MODEL(internalName, modelType) PlayerModelManager_registerModel(PMM_API_VERSION, internalName, modelType)
 
 // Sets the name that will appear in the menu for the passed in model handle.
 //
-// Limited to 32 characters.
+// Limited to 32 characters. Longer names will be truncated.
 //
 // This function can only be used during the PlayerModelManager_onRegisterModels event.
 //
@@ -416,7 +574,7 @@ RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setDisplayName(PlayerM
 
 // Sets the name that will appear in the author field of the menu.
 //
-// Limited to 64 characters.
+// Limited to 64 characters. Longer names will be truncated.
 //
 // This function can only be used during the PlayerModelManager_onRegisterModels event.
 //
@@ -444,10 +602,33 @@ RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setShieldingSkeleton(P
 // Returns true upon successful display list set, false otherwise.
 RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setDisplayList(PlayerModelManagerHandle h, PlayerModelManagerDisplayListId dlId, Gfx *dl));
 
+// Targetted display list replacement for equipment model types.
+//
+// When an equipment model is used on a model with the passed in type, the display list specified here will be used instead.
+//
+// Any unspecified forms will use the display list passed into PlayerModelManager_setDisplayList if one is set.
+//
+// Returns true if display list was successfully set, false otherwise.
+RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setDisplayListForModelType(PlayerModelManagerHandle h, PlayerModelManagerModelType type, PlayerModelManagerDisplayListId dlId, Gfx *dl));
+
 // Sets a matrix on the custom model.
 //
 // Returns true if matrix was successfully set, false otherwise.
 RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setMatrix(PlayerModelManagerHandle h, PlayerModelManagerMatrixId mtxId, Mtx *matrix));
+
+// Targetted matrix setting for equipment model types.
+//
+// When an equipment model is used on a model with the passed in type, the matrix specified here will be used instead.
+//
+// Any unspecified forms will use the matrix passed into PlayerModelManager_setMatrix if one is set.
+//
+// Returns true if matrix was successfully set, false otherwise.
+RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_setMatrixForModelType(PlayerModelManagerHandle h, PlayerModelManagerModelType type, PlayerModelManagerMatrixId mtxId, Mtx *matrix));
+
+// Adds a handle to a model pack. Models will be applied in the order that their handles are added in.
+//
+// Returns true if handle was successfully added, false otherwise.
+RECOMP_IMPORT(YAZMT_PMM_MOD_NAME, bool PlayerModelManager_addHandleToPack(PlayerModelManagerHandle h, PlayerModelManagerHandle toAdd));
 
 // Set a callback function for this model. The types of events that can be responded to are in the PlayerModelManagerModelEvent enum.
 //

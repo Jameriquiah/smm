@@ -3,16 +3,19 @@
 #include "recomputils.h"
 #include "playermodelmanager_api.h"
 #include "gSalemHumanSkel.h"
-#include "gSalemHumanHandsClosedSkel.h"
+#include "gSalemHumanHandSkel.h"
+#include "gSalemHumanHandClosedSkel.h"
 #include "gSalemHumanLeftHandBottleSkel.h"
 #include "gSalemHumanRightHandOcarinaSkel.h"
-#include "FPSArmDL.h"
+#include "gSalemHumanFPSHandDL.h"
 #include "gSalemDekuSkel.h"
 #include "gSalemGoronSkel.h"
-#include "GoronLeftHandClosedDL.h"
-#include "GoronRightHandClosedDL.h"
-#include "GoronLeftHandBottleDL.h"
-#include "GoronCurledDL.h"
+#include "gSalemGoronHandSkel.h"
+#include "gSalemGoronHandClosedSkel.h"
+#include "gSalemGoronHandBottleSkel.h"
+#include "gSalemGoronShieldingSkel.h"
+#include "gSalemGoronCurledDL.h"
+#include "gSalemGoronCurledSpikesDL.h"
 #include "gSalemZoraSkel.h"
 #include "gSalemZoraHandSkel.h"
 #include "gSalemZoraHandClosedSkel.h"
@@ -27,47 +30,45 @@
 #include "gSalemZoraShieldDL.h"
 #include "gSalemZoraMagicBarrierDL.h"
 #include "gSalemFierceDeitySkel.h"
-#include "FDLeftHandBottleDL.h"
-#include "FDLeftHandClosedDL.h"
-#include "FDRightHandClosedDL.h"
+#include "gSalemFierceDeityHandSkel.h"
 #include "FDMaskDL.h"
 #include "FDMaskScreamDL.h"
-#include "ElegySalemStatueDL.h"
+#include "gElegyShellSalemHumanDL.h"
 
-TexturePtr sFlipbookTexturesEyes[] = {
-    EyesOpenTex,
-    EyesHalfTex,
-    EyesClosedTex,
-    EyesLookRightTex,
-    EyesLookLeftTex,
-    EyesLookDownTex,
-    EyesLookUpTex,
-    EyeWinceTex,
+TexturePtr HumanTexturesEyes[] = {
+    gSalemHumanEyesOpenTex,
+    gSalemHumanEyesHalfTex,
+    gSalemHumanEyesClosedTex,
+    gSalemHumanEyesRightTex,
+    gSalemHumanEyesLeftTex,
+    gSalemHumanEyesDownTex,
+    gSalemHumanEyesUpTex,
+    gSalemHumanEyesWincingTex,
 };
 
-TexturePtr sMouthTextures[] = {
-    MouthClosedTex,
-    MouthHalfTex,
-    MouthOpenTex,
-    MouthSmileTex,
+TexturePtr HumanTexturesMouth[] = {
+    gSalemHumanMouthClosedTex,
+    gSalemHumanMouthHalfTex,
+    gSalemHumanMouthOpenTex,
+    gSalemHumanMouthSmileTex,
 };
 
 TexturePtr DekuTexturesEyes[] = {
-    DekuEyesOpenTex,
-    DekuEyesHalfTex,
-    DekuEyesClosedTex,
-    DekuEyesRightTex,
-    DekuEyesLeftTex,
-    DekuEyesDownTex,
-    DekuEyesUpTex,
-    DekuEyesWinceTex,
+    gSalemDekuEyesOpenTex,
+    gSalemDekuEyesHalfTex,
+    gSalemDekuEyesClosedTex,
+    gSalemDekuEyesRightTex,
+    gSalemDekuEyesLeftTex,
+    gSalemDekuEyesDownTex,
+    gSalemDekuEyesUpTex,
+    gSalemDekuEyesWincingTex,
 };
 
 TexturePtr GoronTexturesEyes[] = {
-    GoronEyesOpenTex,
-    GoronEyesHalfTex,
-    GoronEyesClosedTex,
-    GoronEyesShockedTex,
+    gSalemGoronEyesOpenTex,
+    gSalemGoronEyesHalfTex,
+    gSalemGoronEyesClosedTex,
+    gSalemGoronEyesSurprisedTex,
 };
 
 TexturePtr ZoraTexturesEyes[] = {
@@ -88,22 +89,22 @@ TexturePtr ZoraTexturesMouth[] = {
     gSalemZoraMouthSmileTex,
 };
 
-TexturePtr FDTexturesEyes[] = {
-    FDEyesOpenTex,
-    FDEyesHalfTex,
-    FDEyesClosedTex,
-    FDEyesRightTex,
-    FDEyesLeftTex,
-    FDEyesDownTex,
-    FDEyesUpTex,
-    FDEyesWinceTex,
+TexturePtr FierceDeityTexturesEyes[] = {
+    gSalemFierceDeityEyesOpenTex,
+    gSalemFierceDeityEyesHalfTex,
+    gSalemFierceDeityEyesClosedTex,
+    gSalemFierceDeityEyesRightTex,
+    gSalemFierceDeityEyesLeftTex,
+    gSalemFierceDeityEyesDownTex,
+    gSalemFierceDeityEyesUpTex,
+    gSalemFierceDeityEyesWincingTex,
 };
 
-TexturePtr FDTexturesMouth[] = {
-    FDMouthClosedTex,
-    FDMouthHalfTex,
-    FDMouthOpenTex,
-    FDMouthSmileTex,
+TexturePtr FierceDeityTexturesMouth[] = {
+    gSalemFierceDeityMouthClosedTex,
+    gSalemFierceDeityMouthHalfTex,
+    gSalemFierceDeityMouthOpenTex,
+    gSalemFierceDeityMouthSmileTex,
 };
 
 static const Gfx gSalemZoraLeftHandDL[] = {
@@ -130,19 +131,69 @@ static const Gfx gSalemZoraRightHandDL[] = {
     gsSPEndDisplayList(),
 };
 
+static const Gfx gSalemZoraLeftHandClosedDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone013_gLinkZoraLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemZoraRightHandClosedDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandClosedSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000340, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandClosedSkel_bone016_gLinkZoraRightShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000380, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandClosedSkel_bone017_gLinkZoraRightForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0003C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandClosedSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemZoraLeftHandBottleDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandBottleSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandBottleSkel_bone013_gLinkZoraLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandBottleSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandBottleSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemZoraLeftHandGuitarDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandGuitarSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandGuitarSkel_bone013_gLinkZoraLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandGuitarSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
 PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerHuman() {
     PlayerModelManagerHandle h = PLAYERMODELMANAGER_REGISTER_MODEL("mmsalem", PMM_MODEL_TYPE_CHILD);
 
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Salem");
-    PlayerModelManager_setEyesTextures(h, sFlipbookTexturesEyes);
-    PlayerModelManager_setMouthTextures(h, sMouthTextures);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemHumanHandsClosedSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemHumanHandsClosedSkel_bone018_gLinkHumanRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setEyesTextures(h, HumanTexturesEyes);
+    PlayerModelManager_setMouthTextures(h, HumanTexturesMouth);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemHumanHandSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemHumanHandSkel_bone018_gLinkHumanRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemHumanHandClosedSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemHumanHandClosedSkel_bone018_gLinkHumanRightHandLimb_mesh_layer_Opaque);
     PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemHumanLeftHandBottleSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_OCARINA_TIME, gSalemHumanRightHandOcarinaSkel_bone015_gLinkHumanLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_FPS_RHAND, FPSArmDL);
-	PlayerModelManager_setDisplayList(h, PMM_DL_ELEGY_OF_EMPTINESS_SHELL_HUMAN, ElegySalemStatueDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_OPT_RHAND_OCARINA, gSalemHumanRightHandOcarinaSkel_bone018_gLinkHumanRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_FPS_RHAND, gSalemHumanFPSHandDL);
+	PlayerModelManager_setDisplayList(h, PMM_DL_ELEGY_OF_EMPTINESS_SHELL_HUMAN, gElegyShellSalemHumanDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemHumanSkel);
 }
@@ -166,10 +217,16 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerGoron() {
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Goron Salem");
     PlayerModelManager_setEyesTextures(h, GoronTexturesEyes);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, GoronLeftHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, GoronRightHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, GoronLeftHandBottleDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_CURLED, GoronCurledDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemGoronHandSkel_bone015_gLinkGoronLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemGoronHandSkel_bone018_gLinkGoronRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemGoronHandClosedSkel_bone015_gLinkGoronLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemGoronHandClosedSkel_bone018_gLinkGoronRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemGoronHandBottleSkel_bone015_gLinkGoronLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_BODY_SHIELD_BODY, gSalemGoronShieldingSkel_bone001_gLinkGoronShieldingBodyLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_BODY_SHIELD_HEAD, gSalemGoronShieldingSkel_bone002_gLinkGoronShieldingHeadLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_BODY_SHIELD_ARMS_AND_LEGS, gSalemGoronShieldingSkel_bone003_gLinkGoronShieldingArmsAndLegsLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_CURLED, gSalemGoronCurledDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_SPIKES, gSalemGoronCurledSpikesDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemGoronSkel);
 }
@@ -183,14 +240,18 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerZora() {
     PlayerModelManager_setMouthTextures(h, ZoraTexturesMouth);
     PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemZoraLeftHandDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemZoraRightHandDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemZoraHandClosedSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemZoraHandClosedSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemZoraHandBottleSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemZoraLeftHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemZoraRightHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemZoraLeftHandBottleDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, gSalemZoraLeftHandGuitarDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIN, gSalemZoraLeftFinDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RFIN, gSalemZoraRightFinDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIN_SWIM, gSalemZoraLeftSwimmingFinDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RFIN_SWIM, gSalemZoraRightSwimmingFinDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIN_BOOMERANG, gSalemZoraLeftBoomerangDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIN_BOOMERANG, gSalemZoraRightBoomerangDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_FIN_SHIELD, gSalemZoraShieldDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_MAGIC_BARRIER, gSalemZoraMagicBarrierDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemZoraSkel);
 }
@@ -200,11 +261,13 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
 
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Fierce Deity Salem");
-    PlayerModelManager_setEyesTextures(h, FDTexturesEyes);
-    PlayerModelManager_setMouthTextures(h, FDTexturesMouth);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, FDLeftHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, FDRightHandClosedDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, FDLeftHandBottleDL);
+    PlayerModelManager_setEyesTextures(h, FierceDeityTexturesEyes);
+    PlayerModelManager_setMouthTextures(h, FierceDeityTexturesMouth);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemFierceDeityHandSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemFierceDeityHandSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, FDMaskDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, FDMaskScreamDL);
 

@@ -1,0 +1,15 @@
+#ifndef GSALEMGORONCURLEDSPIKESDL_H
+#define GSALEMGORONCURLEDSPIKESDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemGoronCurledSpikesDL_object_link_goron_Tex_00D8B8_i8[];
+extern Vtx gSalemGoronCurledSpikesDL_gSalemGoronCurledSpikesDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemGoronCurledSpikesDL_gSalemGoronCurledSpikesDL_mesh_layer_Opaque_vtx_0[77];
+extern Gfx gSalemGoronCurledSpikesDL_gSalemGoronCurledSpikesDL_mesh_layer_Opaque_tri_0[];
+extern Gfx mat_gSalemGoronCurledSpikesDL_GoronSpikes_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledSpikesDL_GoronSpikes_layerOpaque[];
+extern Gfx gSalemGoronCurledSpikesDL[];
+
+#endif

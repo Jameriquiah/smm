@@ -1,0 +1,51 @@
+#ifndef GSALEMGORONCURLEDDL_H
+#define GSALEMGORONCURLEDDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemGoronCurledDL_gSalemGoronSkinTex_rgba16[];
+extern u64 gSalemGoronCurledDL_object_link_goron_Tex_00CEB8_rgba16[];
+extern u64 gSalemGoronCurledDL_gameplay_keep_Tex_028BB8_i8[];
+extern u64 gSalemGoronCurledDL_gSalemGoronHairPurpleTex_rgba16[];
+extern u64 gSalemGoronCurledDL_gSalemGoronCurledEyes_rgba16[];
+extern u64 gSalemGoronCurledDL_gSalemGoronCurledMouthTex_rgba16[];
+extern u64 gSalemGoronCurledDL_object_link_child_Tex_006200_rgba16[];
+extern u64 gSalemGoronCurledDL_object_link_goron_Tex_003140_ci8[];
+extern u64 gSalemGoronCurledDL_object_link_goron_Tex_003140_pal_rgba16[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_0[55];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_1[137];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_2[80];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_2[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_3[78];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_3[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_4[20];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_4[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_5[10];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_5[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_6[101];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_6[];
+extern Vtx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_vtx_7[120];
+extern Gfx gSalemGoronCurledDL_gSalemGoronCurledDL_mesh_layer_Opaque_tri_7[];
+extern Gfx mat_gSalemGoronCurledDL_GoronSkin_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronSkin_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronClothing_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronClothing_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronLeggings_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronLeggings_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronHairPurple_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronHairPurple_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronCurledEyes_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronCurledEyes_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronCurledMouth_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronCurledMouth_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronBoot_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronBoot_layerOpaque[];
+extern Gfx mat_gSalemGoronCurledDL_GoronBack_layerOpaque[];
+extern Gfx mat_revert_gSalemGoronCurledDL_GoronBack_layerOpaque[];
+extern Gfx gSalemGoronCurledDL[];
+
+#endif

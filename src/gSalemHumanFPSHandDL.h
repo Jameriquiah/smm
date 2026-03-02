@@ -1,0 +1,25 @@
+#ifndef GSALEMHUMANFPSHANDDL_H
+#define GSALEMHUMANFPSHANDDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemHumanFPSHandDL_gSalemHumanArmsTex_rgba16[];
+extern u64 gSalemHumanFPSHandDL_gSalemGlovesTex_i8[];
+extern u64 gSalemHumanFPSHandDL_gSalemHumanUndershirtTex_ia8[];
+extern Vtx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_vtx_0[74];
+extern Gfx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_vtx_1[69];
+extern Gfx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_vtx_2[24];
+extern Gfx gSalemHumanFPSHandDL_gSalemHumanFPSHandDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_gSalemHumanFPSHandDL_Arms_layerOpaque[];
+extern Gfx mat_revert_gSalemHumanFPSHandDL_Arms_layerOpaque[];
+extern Gfx mat_gSalemHumanFPSHandDL_Gloves_layerOpaque[];
+extern Gfx mat_revert_gSalemHumanFPSHandDL_Gloves_layerOpaque[];
+extern Gfx mat_gSalemHumanFPSHandDL_Undershirt_layerOpaque[];
+extern Gfx mat_revert_gSalemHumanFPSHandDL_Undershirt_layerOpaque[];
+extern Gfx gSalemHumanFPSHandDL[];
+
+#endif

@@ -329,12 +329,12 @@ Vtx gSalemZoraHandGuitarSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque_
 	{{ {-40, 208, -35}, 0, {240, 112}, {58, 103, 209, 255} }},
 	{{ {-40, 208, 63}, 0, {240, 112}, {42, 104, 58, 255} }},
 	{{ {293, 70, 149}, 0, {240, 112}, {11, 239, 125, 255} }},
-	{{ {1116, 34, 61}, 0, {240, 112}, {251, 170, 93, 255} }},
+	{{ {1116, 34, 61}, 0, {240, 112}, {222, 187, 101, 255} }},
 	{{ {1079, -56, -31}, 0, {240, 112}, {58, 146, 229, 255} }},
 	{{ {1043, 34, -122}, 0, {240, 112}, {58, 232, 146, 255} }},
 	{{ {1061, 141, -78}, 0, {240, 112}, {93, 71, 207, 255} }},
 	{{ {293, 202, 50}, 0, {240, 112}, {8, 113, 57, 255} }},
-	{{ {1092, 141, 1}, 0, {240, 112}, {34, 210, 113, 255} }},
+	{{ {1092, 141, 1}, 0, {240, 112}, {11, 206, 116, 255} }},
 	{{ {964, 75, -139}, 0, {240, 112}, {5, 243, 130, 255} }},
 	{{ {873, -93, 26}, 0, {240, 112}, {24, 131, 252, 255} }},
 	{{ {967, 221, -44}, 0, {240, 112}, {51, 102, 200, 255} }},
@@ -373,12 +373,12 @@ Vtx gSalemZoraHandGuitarSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque_
 	{{ {-40, 208, -35}, 0, {1008, 1008}, {58, 103, 209, 255} }},
 	{{ {-40, 208, 63}, 0, {1008, 1008}, {42, 104, 58, 255} }},
 	{{ {293, 70, 149}, 0, {1008, 1008}, {11, 239, 125, 255} }},
-	{{ {1116, 34, 61}, 0, {1008, 1008}, {251, 170, 93, 255} }},
+	{{ {1116, 34, 61}, 0, {1008, 1008}, {222, 187, 101, 255} }},
 	{{ {1079, -56, -31}, 0, {1008, 1008}, {58, 146, 229, 255} }},
 	{{ {1043, 34, -122}, 0, {1008, 1008}, {58, 232, 146, 255} }},
 	{{ {1061, 141, -78}, 0, {1008, 1008}, {93, 71, 207, 255} }},
 	{{ {293, 202, 50}, 0, {1008, 1008}, {8, 113, 57, 255} }},
-	{{ {1092, 141, 1}, 0, {1008, 1008}, {34, 210, 113, 255} }},
+	{{ {1092, 141, 1}, 0, {1008, 1008}, {11, 206, 116, 255} }},
 };
 
 Gfx gSalemZoraHandGuitarSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque_tri_1[] = {
@@ -409,8 +409,8 @@ Vtx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_vtx
 	{{ {129, 32, 31}, 0, {-16, 496}, {92, 170, 15, 255} }},
 	{{ {132, 279, 34}, 0, {-16, 496}, {118, 2, 47, 255} }},
 	{{ {105, 379, 110}, 0, {-16, 496}, {66, 52, 95, 255} }},
-	{{ {74, 134, 162}, 0, {-16, 496}, {53, 224, 111, 255} }},
-	{{ {-147, 142, 154}, 0, {-16, 496}, {194, 206, 99, 255} }},
+	{{ {74, 134, 162}, 0, {-16, 496}, {42, 214, 112, 255} }},
+	{{ {-147, 142, 154}, 0, {-16, 496}, {203, 201, 102, 255} }},
 	{{ {-172, 293, 109}, 0, {-16, 496}, {174, 42, 87, 255} }},
 	{{ {-207, 51, -28}, 0, {-16, 496}, {232, 152, 188, 255} }},
 	{{ {-206, 252, -2}, 0, {-16, 496}, {131, 12, 236, 255} }},
@@ -442,13 +442,13 @@ Gfx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_tri
 
 Vtx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_vtx_1[10] = {
 	{{ {129, 32, 31}, 0, {240, 112}, {92, 170, 15, 255} }},
-	{{ {74, 134, 162}, 0, {240, 112}, {53, 224, 111, 255} }},
-	{{ {-147, 142, 154}, 0, {240, 112}, {194, 206, 99, 255} }},
+	{{ {74, 134, 162}, 0, {240, 112}, {42, 214, 112, 255} }},
+	{{ {-147, 142, 154}, 0, {240, 112}, {203, 201, 102, 255} }},
 	{{ {-207, 51, -28}, 0, {240, 112}, {232, 152, 188, 255} }},
 	{{ {-33, -38, -32}, 0, {240, 112}, {97, 29, 179, 255} }},
-	{{ {1116, 34, 61}, 0, {240, 112}, {251, 170, 93, 255} }},
+	{{ {1116, 34, 61}, 0, {240, 112}, {222, 187, 101, 255} }},
 	{{ {1079, -56, -31}, 0, {240, 112}, {58, 146, 229, 255} }},
-	{{ {1092, 141, 1}, 0, {240, 112}, {34, 210, 113, 255} }},
+	{{ {1092, 141, 1}, 0, {240, 112}, {11, 206, 116, 255} }},
 	{{ {1061, 141, -78}, 0, {240, 112}, {93, 71, 207, 255} }},
 	{{ {1043, 34, -122}, 0, {240, 112}, {58, 232, 146, 255} }},
 };
@@ -458,7 +458,7 @@ Gfx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_tri
 	gsSPMatrix(0x0d0002c0, G_MTX_LOAD),
 	gsSPVertex(gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_vtx_1 + 5, 5, 5),
 	gsSP2Triangles(0, 5, 6, 0, 0, 1, 5, 0),
-	gsSP2Triangles(2, 5, 1, 0, 2, 7, 5, 0),
+	gsSP2Triangles(7, 5, 1, 0, 7, 1, 2, 0),
 	gsSP2Triangles(3, 7, 2, 0, 3, 8, 7, 0),
 	gsSP2Triangles(4, 8, 3, 0, 4, 9, 8, 0),
 	gsSP2Triangles(4, 6, 9, 0, 4, 0, 6, 0),
@@ -467,8 +467,8 @@ Gfx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_tri
 
 Vtx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_vtx_2[20] = {
 	{{ {1079, -56, -31}, 0, {1008, 1008}, {58, 146, 229, 255} }},
-	{{ {1116, 34, 61}, 0, {1008, 1008}, {251, 170, 93, 255} }},
-	{{ {1092, 141, 1}, 0, {1008, 1008}, {34, 210, 113, 255} }},
+	{{ {1116, 34, 61}, 0, {1008, 1008}, {222, 187, 101, 255} }},
+	{{ {1092, 141, 1}, 0, {1008, 1008}, {11, 206, 116, 255} }},
 	{{ {1061, 141, -78}, 0, {1008, 1008}, {93, 71, 207, 255} }},
 	{{ {1043, 34, -122}, 0, {1008, 1008}, {58, 232, 146, 255} }},
 	{{ {229, 302, -125}, 0, {1008, 1008}, {101, 212, 193, 255} }},
@@ -484,8 +484,8 @@ Vtx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_vtx
 	{{ {-33, -38, -32}, 0, {1008, 1008}, {97, 29, 179, 255} }},
 	{{ {122, 157, -77}, 0, {1008, 1008}, {17, 207, 140, 255} }},
 	{{ {-36, 238, -53}, 0, {1008, 1008}, {220, 220, 140, 255} }},
-	{{ {74, 134, 162}, 0, {1008, 1008}, {53, 224, 111, 255} }},
-	{{ {-147, 142, 154}, 0, {1008, 1008}, {194, 206, 99, 255} }},
+	{{ {74, 134, 162}, 0, {1008, 1008}, {42, 214, 112, 255} }},
+	{{ {-147, 142, 154}, 0, {1008, 1008}, {201, 199, 99, 255} }},
 };
 
 Gfx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_tri_2[] = {
@@ -505,7 +505,7 @@ Gfx gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque_tri
 	gsSP2Triangles(19, 11, 14, 0, 14, 2, 19, 0),
 	gsSP2Triangles(14, 3, 2, 0, 15, 3, 14, 0),
 	gsSP2Triangles(15, 4, 3, 0, 15, 0, 4, 0),
-	gsSP2Triangles(19, 2, 1, 0, 19, 1, 18, 0),
+	gsSP2Triangles(2, 18, 19, 0, 2, 1, 18, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -661,11 +661,11 @@ Gfx gSalemZoraHandGuitarSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque_tri_2[
 };
 
 Gfx mat_gSalemZoraHandGuitarSkel_ZoraSkin_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_FOG | G_SHADING_SMOOTH | G_LIGHTING | G_SHADE | G_CULL_BACK | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_SHADE | G_LIGHTING | G_FOG | G_ZBUFFER | G_SHADING_SMOOTH | G_CULL_BACK),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TT_NONE | G_CD_MAGICSQ | G_TL_TILE | G_TP_PERSP | G_TC_FILT | G_TD_CLAMP | G_CYC_2CYCLE | G_CK_NONE | G_TF_BILERP | G_AD_NOISE | G_PM_NPRIMITIVE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_CK_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_PM_NPRIMITIVE | G_TP_PERSP | G_TT_NONE | G_AD_NOISE | G_TC_FILT | G_TL_TILE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemZoraHandGuitarSkel_gSalemZoraSkinTex_rgba16),
@@ -678,16 +678,16 @@ Gfx mat_gSalemZoraHandGuitarSkel_ZoraSkin_layerOpaque[] = {
 
 Gfx mat_revert_gSalemZoraHandGuitarSkel_ZoraSkin_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemZoraHandGuitarSkel_ZoraBackSkinShade_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_FOG | G_SHADING_SMOOTH | G_LIGHTING | G_SHADE | G_CULL_BACK | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_SHADE | G_LIGHTING | G_FOG | G_ZBUFFER | G_SHADING_SMOOTH | G_CULL_BACK),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TT_NONE | G_CD_MAGICSQ | G_TL_TILE | G_TP_PERSP | G_TC_FILT | G_TD_CLAMP | G_CYC_2CYCLE | G_CK_NONE | G_TF_BILERP | G_AD_NOISE | G_PM_NPRIMITIVE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_XLU_DECAL2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_CK_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_PM_NPRIMITIVE | G_TP_PERSP | G_TT_NONE | G_AD_NOISE | G_TC_FILT | G_TL_TILE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_FOG_SHADE_A | G_RM_AA_ZB_XLU_DECAL2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemZoraHandGuitarSkel_gSalemZoraBackSkinShadeTex_rgba16),
@@ -700,16 +700,16 @@ Gfx mat_gSalemZoraHandGuitarSkel_ZoraBackSkinShade_layerOpaque[] = {
 
 Gfx mat_revert_gSalemZoraHandGuitarSkel_ZoraBackSkinShade_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemZoraHandGuitarSkel_ZoraHand_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_FOG | G_SHADING_SMOOTH | G_LIGHTING | G_SHADE | G_CULL_BACK | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_SHADE | G_LIGHTING | G_FOG | G_ZBUFFER | G_SHADING_SMOOTH | G_CULL_BACK),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TT_NONE | G_CD_MAGICSQ | G_TL_TILE | G_TP_PERSP | G_TC_FILT | G_TD_CLAMP | G_CYC_2CYCLE | G_CK_NONE | G_TF_BILERP | G_AD_NOISE | G_PM_NPRIMITIVE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_CK_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_PM_NPRIMITIVE | G_TP_PERSP | G_TT_NONE | G_AD_NOISE | G_TC_FILT | G_TL_TILE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, gSalemZoraHandGuitarSkel_gSalemZoraHandTex_rgba16),
@@ -722,16 +722,16 @@ Gfx mat_gSalemZoraHandGuitarSkel_ZoraHand_layerOpaque[] = {
 
 Gfx mat_revert_gSalemZoraHandGuitarSkel_ZoraHand_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_gSalemZoraHandGuitarSkel_ZoraBack_layerOpaque[] = {
-	gsSPLoadGeometryMode(G_FOG | G_SHADING_SMOOTH | G_LIGHTING | G_SHADE | G_CULL_BACK | G_ZBUFFER),
+	gsSPLoadGeometryMode(G_SHADE | G_LIGHTING | G_FOG | G_ZBUFFER | G_SHADING_SMOOTH | G_CULL_BACK),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
-	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_TL_TILE | G_CD_MAGICSQ | G_TP_PERSP | G_TC_FILT | G_TD_CLAMP | G_CYC_2CYCLE | G_CK_NONE | G_TF_BILERP | G_TT_RGBA16 | G_AD_NOISE | G_PM_NPRIMITIVE),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_ZS_PIXEL | G_RM_FOG_SHADE_A),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_TF_BILERP | G_CK_NONE | G_TD_CLAMP | G_CYC_2CYCLE | G_TT_RGBA16 | G_PM_NPRIMITIVE | G_TP_PERSP | G_AD_NOISE | G_TC_FILT | G_TL_TILE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSalemZoraHandGuitarSkel_gZoraBackAndHeadTailTex_pal_rgba16),
@@ -747,7 +747,7 @@ Gfx mat_gSalemZoraHandGuitarSkel_ZoraBack_layerOpaque[] = {
 
 Gfx mat_revert_gSalemZoraHandGuitarSkel_ZoraBack_layerOpaque[] = {
 	gsDPPipeSync(),
-	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_RM_AA_ZB_OPA_SURF2 | G_RM_AA_ZB_OPA_SURF | G_ZS_PIXEL),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2 | G_AC_NONE | G_ZS_PIXEL),
 	gsSPEndDisplayList(),
 };
 
