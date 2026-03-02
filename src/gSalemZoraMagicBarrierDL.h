@@ -1,0 +1,20 @@
+#ifndef GSALEMZORAMAGICBARRIERDL_H
+#define GSALEMZORAMAGICBARRIERDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemZoraMagicBarrierDL_object_link_zora_Tex_012260_i8[];
+extern u64 gSalemZoraMagicBarrierDL_object_link_zora_Tex_011A60_i8[];
+extern Vtx gSalemZoraMagicBarrierDL_gSalemZoraMagicBarrierDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemZoraMagicBarrierDL_gSalemZoraMagicBarrierDL_mesh_layer_Opaque_vtx_0[139];
+extern Gfx gSalemZoraMagicBarrierDL_gSalemZoraMagicBarrierDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemZoraMagicBarrierDL_gSalemZoraMagicBarrierDL_mesh_layer_Opaque_vtx_1[143];
+extern Gfx gSalemZoraMagicBarrierDL_gSalemZoraMagicBarrierDL_mesh_layer_Opaque_tri_1[];
+extern Gfx mat_gSalemZoraMagicBarrierDL_MagicBarrierOuter_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraMagicBarrierDL_MagicBarrierOuter_layerOpaque[];
+extern Gfx mat_gSalemZoraMagicBarrierDL_MagicBarrierInner_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraMagicBarrierDL_MagicBarrierInner_layerOpaque[];
+extern Gfx gSalemZoraMagicBarrierDL[];
+
+#endif

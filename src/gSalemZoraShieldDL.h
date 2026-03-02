@@ -1,0 +1,26 @@
+#ifndef GSALEMZORASHIELDDL_H
+#define GSALEMZORASHIELDDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemZoraShieldDL_gZoraFinTex_ci8[];
+extern u64 gSalemZoraShieldDL_gZoraFinTex_pal_rgba16[];
+extern u64 gSalemZoraShieldDL_gSalemZoraHeadBackTex_rgba16[];
+extern u64 gSalemZoraShieldDL_gSalemZoraFinSkinShadeTex_rgba16[];
+extern Vtx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_vtx_0[101];
+extern Gfx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_vtx_1[71];
+extern Gfx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_vtx_2[101];
+extern Gfx gSalemZoraShieldDL_gSalemZoraShieldDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_gSalemZoraShieldDL_ZoraFinShield_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraShieldDL_ZoraFinShield_layerOpaque[];
+extern Gfx mat_gSalemZoraShieldDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraShieldDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_gSalemZoraShieldDL_ZoraFinShieldSkinShade_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraShieldDL_ZoraFinShieldSkinShade_layerOpaque[];
+extern Gfx gSalemZoraShieldDL[];
+
+#endif

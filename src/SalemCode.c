@@ -14,13 +14,18 @@
 #include "GoronLeftHandBottleDL.h"
 #include "GoronCurledDL.h"
 #include "gSalemZoraSkel.h"
-#include "gSalemZoraLeftHandBottleSkel.h"
-#include "gSalemZoraHandsClosedSkel.h"
-#include "gSalemZoraLeftHandGuitarSkel.h"
-#include "ZoraLeftFinDL.h"
-#include "ZoraRightFinDL.h"
-#include "ZoraLeftSwimmingFinDL.h"
-#include "ZoraRightSwimmingFinDL.h"
+#include "gSalemZoraHandSkel.h"
+#include "gSalemZoraHandClosedSkel.h"
+#include "gSalemZoraHandBottleSkel.h"
+#include "gSalemZoraHandGuitarSkel.h"
+#include "gSalemZoraLeftFinDL.h"
+#include "gSalemZoraRightFinDL.h"
+#include "gSalemZoraLeftSwimmingFinDL.h"
+#include "gSalemZoraRightSwimmingFinDL.h"
+#include "gSalemZoraLeftBoomerangDL.h"
+#include "gSalemZoraRightBoomerangDL.h"
+#include "gSalemZoraShieldDL.h"
+#include "gSalemZoraMagicBarrierDL.h"
 #include "gSalemFierceDeitySkel.h"
 #include "FDLeftHandBottleDL.h"
 #include "FDLeftHandClosedDL.h"
@@ -66,21 +71,21 @@ TexturePtr GoronTexturesEyes[] = {
 };
 
 TexturePtr ZoraTexturesEyes[] = {
-    ZoraEyesOpenTex,
-    ZoraEyesHalfTex,
-    ZoraEyesClosedTex,
-    ZoraEyesRightTex,
-    ZoraEyesLeftTex,
-    ZoraEyesDownTex,
-    ZoraEyesUpTex,
-    ZoraEyesWinceTex,
+    gSalemZoraEyesOpenTex,
+    gSalemZoraEyesHalfTex,
+    gSalemZoraEyesClosedTex,
+    gSalemZoraEyesRightTex,
+    gSalemZoraEyesLeftTex,
+    gSalemZoraEyesDownTex,
+    gSalemZoraEyesUpTex,
+    gSalemZoraEyesWincingTex,
 };
 
 TexturePtr ZoraTexturesMouth[] = {
-    ZoraMouthClosedTex,
-    ZoraMouthHalfTex,
-    ZoraMouthOpenTex,
-    ZoraMouthSmileTex,
+    gSalemZoraMouthClosedTex,
+    gSalemZoraMouthHalfTex,
+    gSalemZoraMouthOpenTex,
+    gSalemZoraMouthSmileTex,
 };
 
 TexturePtr FDTexturesEyes[] = {
@@ -99,6 +104,30 @@ TexturePtr FDTexturesMouth[] = {
     FDMouthHalfTex,
     FDMouthOpenTex,
     FDMouthSmileTex,
+};
+
+static const Gfx gSalemZoraLeftHandDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone013_gLinkZoraLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone014_gLinkZoraLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemZoraRightHandDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone020_gLinkZoraTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000340, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone016_gLinkZoraRightShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000380, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone017_gLinkZoraRightForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0003C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemZoraHandSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
 };
 
 PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerHuman() {
@@ -152,14 +181,16 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerZora() {
     PlayerModelManager_setDisplayName(h, "Zora Salem");
 	PlayerModelManager_setEyesTextures(h, ZoraTexturesEyes);
     PlayerModelManager_setMouthTextures(h, ZoraTexturesMouth);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemZoraHandsClosedSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemZoraHandsClosedSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemZoraLeftHandBottleSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, gSalemZoraLeftHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIN, ZoraLeftFinDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIN, ZoraRightFinDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIN_SWIM, ZoraLeftSwimmingFinDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIN_SWIM, ZoraRightSwimmingFinDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemZoraLeftHandDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemZoraRightHandDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemZoraHandClosedSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemZoraHandClosedSkel_bone018_gLinkZoraRightHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemZoraHandBottleSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_GUITAR, gSalemZoraHandGuitarSkel_bone015_gLinkZoraLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIN, gSalemZoraLeftFinDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIN, gSalemZoraRightFinDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIN_SWIM, gSalemZoraLeftSwimmingFinDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIN_SWIM, gSalemZoraRightSwimmingFinDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemZoraSkel);
 }

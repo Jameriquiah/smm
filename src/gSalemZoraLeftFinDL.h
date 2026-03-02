@@ -1,0 +1,26 @@
+#ifndef GSALEMZORALEFTFINDL_H
+#define GSALEMZORALEFTFINDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemZoraLeftFinDL_gZoraFinTex_ci8[];
+extern u64 gSalemZoraLeftFinDL_gZoraFinTex_pal_rgba16[];
+extern u64 gSalemZoraLeftFinDL_gSalemZoraHeadBackTex_rgba16[];
+extern u64 gSalemZoraLeftFinDL_gSalemZoraFinSkinShadeTex_rgba16[];
+extern Vtx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_vtx_0[47];
+extern Gfx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_vtx_1[70];
+extern Gfx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_vtx_2[47];
+extern Gfx gSalemZoraLeftFinDL_gSalemZoraLeftFinDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_gSalemZoraLeftFinDL_ZoraFin_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraLeftFinDL_ZoraFin_layerOpaque[];
+extern Gfx mat_gSalemZoraLeftFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraLeftFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_gSalemZoraLeftFinDL_ZoraFinSkinShade_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraLeftFinDL_ZoraFinSkinShade_layerOpaque[];
+extern Gfx gSalemZoraLeftFinDL[];
+
+#endif

@@ -1,0 +1,26 @@
+#ifndef GSALEMZORARIGHTSWIMMINGFINDL_H
+#define GSALEMZORARIGHTSWIMMINGFINDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemZoraRightSwimmingFinDL_gZoraFinTex_ci8[];
+extern u64 gSalemZoraRightSwimmingFinDL_gZoraFinTex_pal_rgba16[];
+extern u64 gSalemZoraRightSwimmingFinDL_gSalemZoraHeadBackTex_rgba16[];
+extern u64 gSalemZoraRightSwimmingFinDL_gSalemZoraFinSkinShadeTex_rgba16[];
+extern Vtx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_0[85];
+extern Gfx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_1[129];
+extern Gfx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_vtx_2[85];
+extern Gfx gSalemZoraRightSwimmingFinDL_gSalemZoraRightSwimmingFinDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_gSalemZoraRightSwimmingFinDL_ZoraFinShield_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraRightSwimmingFinDL_ZoraFinShield_layerOpaque[];
+extern Gfx mat_gSalemZoraRightSwimmingFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraRightSwimmingFinDL_ZoraHeadBack_layerOpaque[];
+extern Gfx mat_gSalemZoraRightSwimmingFinDL_ZoraFinShieldSkinShade_layerOpaque[];
+extern Gfx mat_revert_gSalemZoraRightSwimmingFinDL_ZoraFinShieldSkinShade_layerOpaque[];
+extern Gfx gSalemZoraRightSwimmingFinDL[];
+
+#endif
