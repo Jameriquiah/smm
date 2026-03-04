@@ -1,0 +1,41 @@
+#ifndef GSALEMFIERCEDEITYMASKDL_H
+#define GSALEMFIERCEDEITYMASKDL_H
+
+#include "ultra64.h"
+#include "global.h"
+
+extern u64 gSalemFierceDeityMaskDL_gSalemFierceDeityMaskEyesTex_rgba16[];
+extern u64 gSalemFierceDeityMaskDL_gLinkFierceDeityMouthClosedTex_ci8[];
+extern u64 gSalemFierceDeityMaskDL_gLinkFierceDeityMouthClosedTex_pal_rgba16[];
+extern u64 gSalemFierceDeityMaskDL_gSalemFierceDeityHairTex_i8[];
+extern u64 gSalemFierceDeityMaskDL_gSalemFierceDeityNoseTex_rgba16[];
+extern u64 gSalemFierceDeityMaskDL_gSalemFierceDeityNose2Tex_rgba16[];
+extern u64 gSalemFierceDeityMaskDL_gSalemFierceDeityHatTex_i8[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_0[48];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_1[8];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_2[169];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_2[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_3[4];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_3[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_4[5];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_4[];
+extern Vtx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_vtx_5[14];
+extern Gfx gSalemFierceDeityMaskDL_gSalemFierceDeityMaskDL_mesh_layer_Opaque_tri_5[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskEyes_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskEyes_layerOpaque[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskMouth_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskMouth_layerOpaque[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskHair_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskHair_layerOpaque[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskNose_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskNose_layerOpaque[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskNose2_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskNose2_layerOpaque[];
+extern Gfx mat_gSalemFierceDeityMaskDL_FDMaskHat_layerOpaque[];
+extern Gfx mat_revert_gSalemFierceDeityMaskDL_FDMaskHat_layerOpaque[];
+extern Gfx gSalemFierceDeityMaskDL[];
+
+#endif

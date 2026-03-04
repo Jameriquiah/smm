@@ -34,8 +34,8 @@
 #include "gSalemFierceDeityHandSkel.h"
 #include "gSalemFierceDeityHandClosedSkel.h"
 #include "gSalemFierceDeityHandBottleSkel.h"
-#include "FDMaskDL.h"
-#include "FDMaskScreamDL.h"
+#include "gSalemFierceDeityMaskDL.h"
+#include "gSalemFierceDeityScreamingMaskDL.h"
 #include "gElegyShellSalemHumanDL.h"
 #include "sys_matrix.h"
 #include "z64player.h"
@@ -111,29 +111,6 @@ TexturePtr FierceDeityTexturesMouth[] = {
     gSalemFierceDeityMouthOpenTex,
     gSalemFierceDeityMouthSmileTex,
 };
-
-static PlayerModelManagerHandle sSalemFierceDeityHandle;
-static Vec3s sSalemFierceDeityHairJointTable[GSALEMFIERCEDEITYHAIRSKEL_NUM_LIMBS];
-static MtxF sSalemFierceDeityHairHeadMtx;
-static u32 sSalemFierceDeityHairHeadMtxFrame = 0xFFFFFFFF;
-static bool sSalemFierceDeityHairHasHeadMtx;
-
-static bool SalemFierceDeityHair_ShouldDraw(Player* player) {
-    if (player->transformation != PLAYER_FORM_FIERCE_DEITY) {
-        return false;
-    }
-
-    if (sSalemFierceDeityHandle == 0) {
-        return false;
-    }
-
-    return PlayerModelManager_isApplied(sSalemFierceDeityHandle);
-}
-
-static void SalemFierceDeityHair_Draw(PlayState* play, Actor* actor) {
-    SkelAnime_DrawFlexOpa(play, gSalemFierceDeityHairSkel.sh.segment, sSalemFierceDeityHairJointTable,
-                          gSalemFierceDeityHairSkel.dListCount, NULL, NULL, actor);
-}
 
 static const Gfx gSalemZoraLeftHandDL[] = {
     gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
@@ -267,6 +244,29 @@ static const Gfx gSalemFierceDeityLeftHandBottleDL[] = {
     gsSPEndDisplayList(),
 };
 
+static PlayerModelManagerHandle sSalemFierceDeityHandle;
+static Vec3s sSalemFierceDeityHairJointTable[GSALEMFIERCEDEITYHAIRSKEL_NUM_LIMBS];
+static MtxF sSalemFierceDeityHairHeadMtx;
+static u32 sSalemFierceDeityHairHeadMtxFrame = 0xFFFFFFFF;
+static bool sSalemFierceDeityHairHasHeadMtx;
+
+static bool SalemFierceDeityHair_ShouldDraw(Player* player) {
+    if (player->transformation != PLAYER_FORM_FIERCE_DEITY) {
+        return false;
+    }
+
+    if (sSalemFierceDeityHandle == 0) {
+        return false;
+    }
+
+    return PlayerModelManager_isApplied(sSalemFierceDeityHandle);
+}
+
+static void SalemFierceDeityHair_Draw(PlayState* play, Actor* actor) {
+    SkelAnime_DrawFlexOpa(play, gSalemFierceDeityHairSkel.sh.segment, sSalemFierceDeityHairJointTable,
+                          gSalemFierceDeityHairSkel.dListCount, NULL, NULL, actor);
+}
+
 PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerHuman() {
     PlayerModelManagerHandle h = PLAYERMODELMANAGER_REGISTER_MODEL("mmsalem", PMM_MODEL_TYPE_CHILD);
 
@@ -357,8 +357,8 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
     PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemFierceDeityLeftHandClosedDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemFierceDeityRightHandClosedDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemFierceDeityLeftHandBottleDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, FDMaskDL);
-    PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, FDMaskScreamDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, gSalemFierceDeityMaskDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, gSalemFierceDeityScreamingMaskDL);
 
     PlayerModelManager_setSkeleton(h, &gSalemFierceDeitySkel);
 }
