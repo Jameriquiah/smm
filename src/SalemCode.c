@@ -32,6 +32,8 @@
 #include "gSalemFierceDeitySkel.h"
 #include "gSalemFierceDeityHairSkel.h"
 #include "gSalemFierceDeityHandSkel.h"
+#include "gSalemFierceDeityHandClosedSkel.h"
+#include "gSalemFierceDeityHandBottleSkel.h"
 #include "FDMaskDL.h"
 #include "FDMaskScreamDL.h"
 #include "gElegyShellSalemHumanDL.h"
@@ -205,6 +207,66 @@ static const Gfx gSalemZoraLeftHandGuitarDL[] = {
     gsSPEndDisplayList(),
 };
 
+static const Gfx gSalemFierceDeityLeftHandDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone020_gLinkFierceDeityTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone013_gLinkFierceDeityLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone014_gLinkFierceDeityLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemFierceDeityRightHandDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone020_gLinkFierceDeityTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000340, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone016_gLinkFierceDeityRightShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000380, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone017_gLinkFierceDeityRightForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0003C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemFierceDeityLeftHandClosedDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone020_gLinkFierceDeityTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone013_gLinkFierceDeityLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone014_gLinkFierceDeityLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemFierceDeityRightHandClosedDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone020_gLinkFierceDeityTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000340, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone016_gLinkFierceDeityRightShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000380, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone017_gLinkFierceDeityRightForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0003C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandClosedSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
+static const Gfx gSalemFierceDeityLeftHandBottleDL[] = {
+    gsSPMatrix(0x0D000440, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandBottleSkel_bone020_gLinkFierceDeityTorsoLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000280, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandBottleSkel_bone013_gLinkFierceDeityLeftShoulderLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D0002C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandBottleSkel_bone014_gLinkFierceDeityLeftForearmLimb_mesh_layer_Opaque),
+    gsSPMatrix(0x0D000300, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPDisplayList(gSalemFierceDeityHandBottleSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque),
+    gsSPEndDisplayList(),
+};
+
 PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerHuman() {
     PlayerModelManagerHandle h = PLAYERMODELMANAGER_REGISTER_MODEL("mmsalem", PMM_MODEL_TYPE_CHILD);
 
@@ -290,11 +352,11 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
     PlayerModelManager_setDisplayName(h, "Fierce Deity Salem");
     PlayerModelManager_setEyesTextures(h, FierceDeityTexturesEyes);
     PlayerModelManager_setMouthTextures(h, FierceDeityTexturesMouth);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemFierceDeityHandSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemFierceDeityHandSkel_bone018_gLinkFierceDeityRightHandLimb_mesh_layer_Opaque);
-    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemFierceDeityHandSkel_bone015_gLinkFierceDeityLeftHandLimb_mesh_layer_Opaque);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND, gSalemFierceDeityLeftHandDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RHAND, gSalemFierceDeityRightHandDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LFIST, gSalemFierceDeityLeftHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_RFIST, gSalemFierceDeityRightHandClosedDL);
+    PlayerModelManager_setDisplayList(h, PMM_DL_LHAND_BOTTLE, gSalemFierceDeityLeftHandBottleDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, FDMaskDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, FDMaskScreamDL);
 
