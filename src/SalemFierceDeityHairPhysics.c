@@ -1,297 +1,212 @@
-#include "modding.h"
-#include "global.h"
-#include "playermodelmanager_api.h"
-#include "gSalemFierceDeitySkel.h"
-#include "gSalemFierceDeityHairSkel.h"
 #include "SalemFierceDeityHairPhysics.h"
 
-#define GRAVITY -5.0f
-#define LIMB_MASS 1.0f
-#define PINNED 1
-#define NOT_PINNED 0
-#define CONTROL_X_ROT_FIX -0x4000
+#include <math.h>
 
-typedef struct {
-    Vec3f curr_vel;
-    Vec3f prev_vel;
-    Vec3s rot;
-} PhysPlayer;
+#include "gSalemFierceDeityHairSkel.h"
+#include "global.h"
+#include "modding.h"
+#include "sys_matrix.h"
 
-typedef struct {
-    Vec3f curr_pos;
-    Vec3f prev_pos;
-    Vec3f curr_vel;
-    Vec3f prev_vel;
-    Vec3s default_jointPos;
-    f32 mass;
-    u8 pinned;
-} PhysLimb;
+#define SALEM_HAIR_NODE_COUNT 4
+#define SALEM_HAIR_SEGMENT_COUNT 3
+#define SALEM_HAIR_CONSTRAINT_ITERS 5
 
-typedef struct {
-    PhysLimb* limb_a;
-    PhysLimb* limb_b;
-    f32 bone_length;
-} PhysBone;
+#define SALEM_HAIR_DAMPING 0.95f
+#define SALEM_HAIR_ROOT_INERTIA 0.06f
+#define SALEM_HAIR_GRAVITY -48.0f
+#define SALEM_HAIR_MAX_VELOCITY 180.0f
+#define SALEM_HAIR_TELEPORT_RESET 500.0f
+#define SALEM_HAIR_MAX_LOCAL_ROT 0x5000
+#define SALEM_HAIR_PLAYER_VEL_FORCE_FWD 9.0f
+#define SALEM_HAIR_PLAYER_ACCEL_FORCE_FWD 15.0f
+#define SALEM_HAIR_PLAYER_VEL_FORCE_SIDE 6.0f
+#define SALEM_HAIR_PLAYER_ACCEL_FORCE_SIDE 9.0f
+#define SALEM_HAIR_PLAYER_FORCE_SMOOTH 0.52f
+#define SALEM_HAIR_PLAYER_FORCE_MAX 90.0f
+#define SALEM_HAIR_HEAD_YAW_FORCE 0.0028f
+#define SALEM_HAIR_HEAD_YAW_FORCE_MAX 70.0f
+#define SALEM_HAIR_BONE001_ANCHOR 0.40f
+#define SALEM_HAIR_IDLE_SWAY_SPEED 0.08f
+#define SALEM_HAIR_IDLE_SWAY_SIDE 1.0f
+#define SALEM_HAIR_IDLE_SWAY_FWD 0.4f
 
-typedef enum SalemHairBodyPart {
-    SALEM_HAIR_BODYPART_ROOT = 0,
-    SALEM_HAIR_BODYPART_CONTROL,
-    SALEM_HAIR_BODYPART_HAIR1,
-    SALEM_HAIR_BODYPART_HAIR2,
-    SALEM_HAIR_BODYPART_HAIR3,
-    SALEM_HAIR_BODYPART_MAX
-} SalemHairBodyPart;
+static bool sSalemHairEnabled;
+static bool sSalemHairHasHeadMtx;
+static bool sSalemHairChainInitialized;
+static bool sSalemHairBaseReady;
+static u32 sSalemHairLastUpdateFrame;
+static u32 sSalemHairHeadMtxFrame;
+static MtxF sSalemHairHeadMtx;
+static Vec3s sSalemHairHeadRot;
+static s16 sSalemHairPrevHeadYaw;
+static Vec3f sSalemHairPrevRoot;
+static Vec3f sSalemHairPrevPlayerVel;
+static Vec3f sSalemHairMoveForce;
+static Vec3f sSalemHairCurr[SALEM_HAIR_NODE_COUNT];
+static Vec3f sSalemHairPrev[SALEM_HAIR_NODE_COUNT];
+static f32 sSalemHairSegmentLength[SALEM_HAIR_SEGMENT_COUNT];
+static Vec3f sSalemHairBaseSegmentLocal[SALEM_HAIR_SEGMENT_COUNT];
+static Vec3s sSalemHairBaseAbsRot[SALEM_HAIR_SEGMENT_COUNT];
+static Vec3s sSalemHairJointTable[GSALEMFIERCEDEITYHAIRSKEL_NUM_LIMBS];
+static PlayerModelManagerHandle sSalemHairModelHandle;
 
-typedef enum SalemHairBoneIndex {
-    SALEM_HAIR_BONE_ROOT_CONTROL = 0,
-    SALEM_HAIR_BONE_CONTROL_HAIR1,
-    SALEM_HAIR_BONE_HAIR1_HAIR2,
-    SALEM_HAIR_BONE_HAIR2_HAIR3,
-    SALEM_HAIR_BONE_MAX
-} SalemHairBoneIndex;
+static const Vec3f sSalemHairRawSegmentLocal[SALEM_HAIR_SEGMENT_COUNT] = {
+    { -509.0f, 666.0f, 0.0f },
+    { -300.0f, 1100.0f, 0.0f },
+    { -300.0f, 1200.0f, 0.0f },
+};
 
-typedef struct {
-    Actor actor;
-    Vec3s jointTable[GSALEMFIERCEDEITYHAIRSKEL_NUM_LIMBS];
-    Vec3f bodyPartsPos[SALEM_HAIR_BODYPART_MAX];
-} SalemFierceDeityHairRig;
+static const s32 sSalemHairJointIndex[SALEM_HAIR_SEGMENT_COUNT] = {
+    GSALEMFIERCEDEITYHAIRSKEL_BONE001_GLINKFIERCEDEITYHAIRCONTROLLIMB_LIMB,
+    GSALEMFIERCEDEITYHAIRSKEL_BONE002_GLINKFIERCEDEITYHAIR1LIMB_LIMB,
+    GSALEMFIERCEDEITYHAIRSKEL_BONE003_GLINKFIERCEDEITYHAIR2LIMB_LIMB,
+};
 
-static PlayerModelManagerHandle sSalemFierceDeityModelHandle = 0;
-static SalemFierceDeityHairRig sHairRig;
-static PhysPlayer sPhysPlayer;
-static PhysLimb sPhysLimbs[SALEM_HAIR_BODYPART_MAX];
-static PhysBone sPhysBones[SALEM_HAIR_BONE_MAX];
-static u8 sHairRigInitialized = 0;
-static u8 sHairWasActive = 0;
-
-static Vec3f sHeadGlobalPos = { 0.0f, 0.0f, 0.0f };
-static Vec3s sHeadRotate = { 0, 0, 0 };
-static MtxF sHeadMtx;
-static u8 sHasHeadPose = 0;
-static PlayState* sLastPlay = NULL;
-
-static void SalemHair_ForceRootLock(void) {
-    Vec3s zeroRot = { 0, 0, 0 };
-    Vec3f zeroVel = { 0.0f, 0.0f, 0.0f };
-
-    sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].pinned = PINNED;
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_pos, &sHeadGlobalPos);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_pos, &sHeadGlobalPos);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel, &zeroVel);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_vel, &zeroVel);
-    Math_Vec3f_Copy(&sHairRig.bodyPartsPos[SALEM_HAIR_BODYPART_ROOT], &sHeadGlobalPos);
-
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_POS_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_ROT_LIMB], &zeroRot);
+static f32 SalemHair_Length(Vec3f v) {
+    return sqrtf((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 }
 
-static void SalemHair_Vec3sSum(Vec3s* l, Vec3s* r, Vec3s* dest) {
-    dest->x = l->x + r->x;
-    dest->y = l->y + r->y;
-    dest->z = l->z + r->z;
+static Vec3f SalemHair_Sub(Vec3f a, Vec3f b) {
+    Vec3f out;
+    out.x = a.x - b.x;
+    out.y = a.y - b.y;
+    out.z = a.z - b.z;
+    return out;
 }
 
-static void SalemHair_Vec3sDiff(Vec3s* l, Vec3s* r, Vec3s* dest) {
-    dest->x = l->x - r->x;
-    dest->y = l->y - r->y;
-    dest->z = l->z - r->z;
+static Vec3f SalemHair_Add(Vec3f a, Vec3f b) {
+    Vec3f out;
+    out.x = a.x + b.x;
+    out.y = a.y + b.y;
+    out.z = a.z + b.z;
+    return out;
 }
 
-static void SalemHair_Vec3sScaleToVec3f(Vec3s* src, f32 scale, Vec3f* dest) {
-    Vec3f temp = { 0.0f, 0.0f, 0.0f };
-
-    Math_Vec3s_ToVec3f(&temp, src);
-    Math_Vec3f_Scale(&temp, scale);
-    Math_Vec3f_Copy(dest, &temp);
+static Vec3f SalemHair_Scale(Vec3f v, f32 s) {
+    Vec3f out;
+    out.x = v.x * s;
+    out.y = v.y * s;
+    out.z = v.z * s;
+    return out;
 }
 
-static void SalemHair_Vec3sRotateByX(Vec3s* src, s16 rotAngle, Vec3s* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    s16 x = src->x;
-    s16 y = src->y;
-    s16 z = src->z;
+static Vec3f SalemHair_ClampVecLength(Vec3f v, f32 maxLen) {
+    f32 len = SalemHair_Length(v);
 
-    dest->x = (s16)(x + 0.0f + 0.0f);
-    dest->y = (s16)(0.0f + (y * cosValue) - (z * sinValue));
-    dest->z = (s16)(0.0f + (y * sinValue) + (z * cosValue));
+    if ((len <= maxLen) || (len <= 0.0001f)) {
+        return v;
+    }
+
+    return SalemHair_Scale(v, maxLen / len);
 }
 
-static void SalemHair_Vec3sRotateByY(Vec3s* src, s16 rotAngle, Vec3s* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    s16 x = src->x;
-    s16 y = src->y;
-    s16 z = src->z;
+static void SalemHair_ResetJointTable(void) {
+    s32 i;
 
-    dest->x = (s16)((x * cosValue) + 0.0f + (z * sinValue));
-    dest->y = (s16)(0.0f + y + 0.0f);
-    dest->z = (s16)((-x * sinValue) + 0.0f + (z * cosValue));
-}
-
-static void SalemHair_Vec3sRotateByZ(Vec3s* src, s16 rotAngle, Vec3s* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    s16 x = src->x;
-    s16 y = src->y;
-    s16 z = src->z;
-
-    dest->x = (s16)((x * cosValue) - (y * sinValue) + 0.0f);
-    dest->y = (s16)((x * sinValue) + (y * cosValue) + 0.0f);
-    dest->z = (s16)(0.0f + 0.0f + z);
-}
-
-static void SalemHair_Vec3sRotate(Vec3s* src, Vec3s* rotAngle, Vec3s* dest) {
-    SalemHair_Vec3sRotateByX(src, rotAngle->x, dest);
-    SalemHair_Vec3sRotateByY(dest, rotAngle->y, dest);
-    SalemHair_Vec3sRotateByZ(dest, rotAngle->z, dest);
-}
-
-static void SalemHair_Vec3fRotateByX(Vec3f* src, s16 rotAngle, Vec3f* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    f32 x = src->x;
-    f32 y = src->y;
-    f32 z = src->z;
-
-    dest->x = (f32)(x + 0.0f + 0.0f);
-    dest->y = (f32)(0.0f + (y * cosValue) - (z * sinValue));
-    dest->z = (f32)(0.0f + (y * sinValue) + (z * cosValue));
-}
-
-static void SalemHair_Vec3fRotateByY(Vec3f* src, s16 rotAngle, Vec3f* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    f32 x = src->x;
-    f32 y = src->y;
-    f32 z = src->z;
-
-    dest->x = (f32)((x * cosValue) + 0.0f + (z * sinValue));
-    dest->y = (f32)(0.0f + y + 0.0f);
-    dest->z = (f32)((-x * sinValue) + 0.0f + (z * cosValue));
-}
-
-static void SalemHair_Vec3fRotateByZ(Vec3f* src, s16 rotAngle, Vec3f* dest) {
-    f32 sinValue = Math_SinS(rotAngle);
-    f32 cosValue = Math_CosS(rotAngle);
-    f32 x = src->x;
-    f32 y = src->y;
-    f32 z = src->z;
-
-    dest->x = (f32)((x * cosValue) - (y * sinValue) + 0.0f);
-    dest->y = (f32)((x * sinValue) + (y * cosValue) + 0.0f);
-    dest->z = (f32)(0.0f + 0.0f + z);
-}
-
-static void SalemHair_Vec3fInverseRotate(Vec3f* src, Vec3s* rotAngle, Vec3f* dest) {
-    SalemHair_Vec3fRotateByZ(src, -rotAngle->x, dest);
-    SalemHair_Vec3fRotateByY(dest, -rotAngle->y, dest);
-    SalemHair_Vec3fRotateByX(dest, -rotAngle->z, dest);
-}
-
-static s16 SalemHair_Vec3fPitch(Vec3f* b, Vec3f* a) {
-    return Math_Atan2S_XY(b->z - a->z, b->y - a->y);
-}
-
-static s16 SalemHair_Vec3fRoll(Vec3f* a, Vec3f* b) {
-    f32 xDist = b->x - a->x;
-    f32 yDist = b->y - a->y;
-
-    if (yDist <= 0.0f) {
-        return 32768 + Math_Atan2S_XY(yDist, xDist);
-    } else {
-        return Math_Atan2S_XY(yDist, xDist);
+    for (i = 0; i < GSALEMFIERCEDEITYHAIRSKEL_NUM_LIMBS; i++) {
+        sSalemHairJointTable[i].x = 0;
+        sSalemHairJointTable[i].y = 0;
+        sSalemHairJointTable[i].z = 0;
     }
 }
 
-static void SalemHair_VerletInitPhysPlayer(PhysPlayer* targetPlayer, Player* player) {
-    targetPlayer->curr_vel = player->actor.velocity;
-    targetPlayer->prev_vel = player->actor.velocity;
-    targetPlayer->rot = player->actor.world.rot;
+static void SalemHair_RotateVecByX(Vec3f* src, s16 angle, Vec3f* dst) {
+    f32 s = Math_SinS(angle);
+    f32 c = Math_CosS(angle);
+
+    dst->x = src->x;
+    dst->y = (src->y * c) - (src->z * s);
+    dst->z = (src->y * s) + (src->z * c);
 }
 
-static void SalemHair_VerletUpdatePhysPlayerVelocity(PhysPlayer* targetPlayer, Player* player) {
-    targetPlayer->prev_vel = targetPlayer->curr_vel;
-    targetPlayer->curr_vel = player->actor.velocity;
-    targetPlayer->rot = player->actor.world.rot;
+static void SalemHair_RotateVecByY(Vec3f* src, s16 angle, Vec3f* dst) {
+    f32 s = Math_SinS(angle);
+    f32 c = Math_CosS(angle);
+
+    dst->x = (src->x * c) + (src->z * s);
+    dst->y = src->y;
+    dst->z = (-src->x * s) + (src->z * c);
 }
 
-static void SalemHair_VerletCalcNetForce(PhysPlayer* targetPlayer, f32 gravity, Vec3f* netForce) {
-    Vec3f velocityDiff = { 0.0f, 0.0f, 0.0f };
+static void SalemHair_RotateVecByZ(Vec3f* src, s16 angle, Vec3f* dst) {
+    f32 s = Math_SinS(angle);
+    f32 c = Math_CosS(angle);
 
-    netForce->x = 0.0f;
-    netForce->y = gravity;
-    netForce->z = 0.0f;
-    Math_Vec3f_Diff(&targetPlayer->curr_vel, &targetPlayer->prev_vel, &velocityDiff);
-    Math_Vec3f_Sum(netForce, &velocityDiff, netForce);
+    dst->x = (src->x * c) - (src->y * s);
+    dst->y = (src->x * s) + (src->y * c);
+    dst->z = src->z;
 }
 
-static void SalemHair_VerletInitLimb(PhysLimb* targetLimb, Vec3f pos, Vec3f vel, f32 mass, u8 pinStatus) {
-    targetLimb->curr_pos = pos;
-    targetLimb->prev_pos = pos;
-    targetLimb->curr_vel = vel;
-    targetLimb->prev_vel = vel;
-    targetLimb->mass = mass;
-    targetLimb->pinned = pinStatus;
+static void SalemHair_RotateVecByVec3s(Vec3f* src, Vec3s* rot, Vec3f* dst) {
+    SalemHair_RotateVecByX(src, rot->x, dst);
+    SalemHair_RotateVecByY(dst, rot->y, dst);
+    SalemHair_RotateVecByZ(dst, rot->z, dst);
 }
 
-static void SalemHair_VerletLimbUpdatePos(PhysLimb* targetLimb, Vec3f* applyForce, Vec3f* applyVel) {
-    if (targetLimb->pinned == 0) {
-        Vec3f newVelocity = { 0.0f, 0.0f, 0.0f };
-        Vec3f opposingVel = { 0.0f, 0.0f, 0.0f };
-        Vec3f accel = { 0.0f, 0.0f, 0.0f };
-        Vec3f newPosition = { 0.0f, 0.0f, 0.0f };
+static s16 SalemHair_DirToPitch(Vec3f dir) {
+    return Math_Atan2S_XY(dir.z, dir.y);
+}
 
-        Math_Vec3f_Diff(&targetLimb->curr_pos, &targetLimb->prev_pos, &newVelocity);
-        Math_Vec3f_ScaleAndStore(applyVel, -1.0f, &opposingVel);
-        Math_Vec3f_Sum(&newVelocity, &opposingVel, &newVelocity);
-        Math_Vec3f_Copy(&targetLimb->curr_vel, &newVelocity);
-
-        targetLimb->prev_pos = targetLimb->curr_pos;
-
-        Math_Vec3f_ScaleAndStore(applyForce, (1.0f / targetLimb->mass), &accel);
-
-        Math_Vec3f_Copy(&newPosition, &targetLimb->curr_pos);
-        Math_Vec3f_Sum(&newPosition, &newVelocity, &newPosition);
-        Math_Vec3f_Sum(&newPosition, &accel, &newPosition);
-        Math_Vec3f_Copy(&targetLimb->curr_pos, &newPosition);
+static s16 SalemHair_DirToRoll(Vec3f dir) {
+    if (dir.y <= 0.0f) {
+        return 32768 + Math_Atan2S_XY(dir.y, dir.x);
     }
+    return Math_Atan2S_XY(dir.y, dir.x);
 }
 
-static void SalemHair_VerletInitBone(PhysBone* targetBone, PhysLimb* limbA, PhysLimb* limbB) {
-    targetBone->limb_a = limbA;
-    targetBone->limb_b = limbB;
-    targetBone->bone_length = Math_Vec3f_DistXYZ(&limbA->curr_pos, &limbB->curr_pos);
+static s16 SalemHair_ClampBinang(s16 value, s16 min, s16 max) {
+    if (value < min) {
+        return min;
+    }
+    if (value > max) {
+        return max;
+    }
+    return value;
 }
 
-static void SalemHair_VerletBoneConstraint(PhysBone* targetBone) {
-    f32 currentDist = Math_Vec3f_DistXYZ(&targetBone->limb_a->curr_pos, &targetBone->limb_b->curr_pos);
-    Vec3f direction = { 0.0f, 0.0f, 0.0f };
-    Vec3f offset = { 0.0f, 0.0f, 0.0f };
-    f32 diff;
-    f32 percent;
+static void SalemHair_InverseRotateVecByVec3s(Vec3f* src, Vec3s* rot, Vec3f* dst) {
+    SalemHair_RotateVecByZ(src, -rot->z, dst);
+    SalemHair_RotateVecByY(dst, -rot->y, dst);
+    SalemHair_RotateVecByX(dst, -rot->x, dst);
+}
 
-    if (currentDist <= 0.0001f) {
+static void SalemHair_BuildBasePoseData(void) {
+    s32 i;
+
+    if (sSalemHairBaseReady) {
         return;
     }
 
-    diff = targetBone->bone_length - currentDist;
-    percent = diff / currentDist;
-    Math_Vec3f_Diff(&targetBone->limb_b->curr_pos, &targetBone->limb_a->curr_pos, &direction);
+    for (i = 0; i < SALEM_HAIR_SEGMENT_COUNT; i++) {
+        Vec3f rotated = sSalemHairRawSegmentLocal[i];
+        Vec3f origin = { 0.0f, 0.0f, 0.0f };
+        Vec3f dir;
 
-    if ((targetBone->limb_a->pinned == 0) && (targetBone->limb_b->pinned == 0)) {
-        percent = percent / 1.0f;
-        Math_Vec3f_ScaleAndStore(&direction, percent, &offset);
-        Math_Vec3f_Sum(&targetBone->limb_b->curr_pos, &offset, &targetBone->limb_b->curr_pos);
-    } else if ((targetBone->limb_a->pinned == 1) && (targetBone->limb_b->pinned == 0)) {
-        percent = percent / 1.0f;
-        Math_Vec3f_ScaleAndStore(&direction, percent, &offset);
-        Math_Vec3f_Sum(&targetBone->limb_b->curr_pos, &offset, &targetBone->limb_b->curr_pos);
+        sSalemHairBaseSegmentLocal[i] = rotated;
+
+        dir = SalemHair_Sub(rotated, origin);
+        sSalemHairBaseAbsRot[i].x = SalemHair_DirToPitch(dir);
+        sSalemHairBaseAbsRot[i].y = 0;
+        sSalemHairBaseAbsRot[i].z = SalemHair_DirToRoll(dir);
     }
+
+    sSalemHairBaseReady = true;
 }
 
-static s32 SalemHair_IsModelActive(Player* player) {
-    if (player == NULL) {
+static void SalemHair_ResetChainState(void) {
+    Vec3f zero = { 0.0f, 0.0f, 0.0f };
+
+    sSalemHairHasHeadMtx = false;
+    sSalemHairHeadMtxFrame = 0xFFFFFFFF;
+    sSalemHairChainInitialized = false;
+    sSalemHairLastUpdateFrame = 0xFFFFFFFF;
+    sSalemHairPrevHeadYaw = 0;
+    sSalemHairPrevPlayerVel = zero;
+    sSalemHairMoveForce = zero;
+}
+
+static bool SalemHair_ShouldDraw(Player* player) {
+    if (!sSalemHairEnabled || (player == NULL)) {
         return false;
     }
 
@@ -303,332 +218,316 @@ static s32 SalemHair_IsModelActive(Player* player) {
         return false;
     }
 
-    if (sSalemFierceDeityModelHandle == 0) {
+    if (sSalemHairModelHandle == 0) {
         return false;
     }
 
-    return PlayerModelManager_isApplied(sSalemFierceDeityModelHandle);
+    return PlayerModelManager_isApplied(sSalemHairModelHandle);
 }
 
-static void SalemHair_SetDefaultBodyPartsPos(Player* player) {
+static Vec3f SalemHair_GetPlayerVelocity(Player* player) {
+    Vec3f vel = SalemHair_Sub(player->actor.world.pos, player->actor.prevPos);
+    vel.y = player->actor.velocity.y;
+    return vel;
+}
+
+static void SalemHair_InitChainFromHead(Vec3f playerVel) {
+    Vec3f root = { sSalemHairHeadMtx.xw, sSalemHairHeadMtx.yw, sSalemHairHeadMtx.zw };
+    Vec3f cursor = root;
     s32 i;
-    Vec3s rootPos = { 0, 0, 0 };
-    Vec3s rootRot = { 0, 0, 0 };
-    static const Vec3s defaultJointPos[SALEM_HAIR_BODYPART_MAX] = {
-        { 0, 0, 0 },
-        { 0, 0, 0 },
-        { -800, -250, 0 },
-        { -1100, -300, 0 },
-        { -1200, -300, 0 },
-    };
 
-    Math_Vec3f_Copy(&sHairRig.actor.world.pos, &sHeadGlobalPos);
-    Math_Vec3s_Copy(&sHairRig.actor.shape.rot, &sHeadRotate);
-    Math_Vec3s_Copy(&sHairRig.actor.world.rot, &sHeadRotate);
+    sSalemHairCurr[0] = root;
+    sSalemHairPrev[0] = root;
 
-    Math_Vec3f_Copy(&sHairRig.bodyPartsPos[SALEM_HAIR_BODYPART_ROOT], &sHeadGlobalPos);
+    for (i = 0; i < SALEM_HAIR_SEGMENT_COUNT; i++) {
+        Vec3f worldSeg;
+
+        SalemHair_RotateVecByVec3s(&sSalemHairBaseSegmentLocal[i], &sSalemHairHeadRot, &worldSeg);
+        cursor = SalemHair_Add(cursor, worldSeg);
+        sSalemHairCurr[i + 1] = cursor;
+        sSalemHairPrev[i + 1] = cursor;
+        sSalemHairSegmentLength[i] = SalemHair_Length(worldSeg);
+    }
+
+    sSalemHairPrevRoot = root;
+    sSalemHairPrevHeadYaw = sSalemHairHeadRot.y;
+    sSalemHairPrevPlayerVel = playerVel;
+    sSalemHairMoveForce.x = 0.0f;
+    sSalemHairMoveForce.y = 0.0f;
+    sSalemHairMoveForce.z = 0.0f;
+    sSalemHairChainInitialized = true;
+}
+
+static void SalemHair_ConstrainSegment(s32 a, s32 b, f32 length, bool aPinned) {
+    Vec3f delta = SalemHair_Sub(sSalemHairCurr[b], sSalemHairCurr[a]);
+    f32 dist = SalemHair_Length(delta);
+    f32 diff;
+
+    if (dist <= 0.0001f) {
+        return;
+    }
+
+    diff = (dist - length) / dist;
+    if (aPinned) {
+        sSalemHairCurr[b] = SalemHair_Sub(sSalemHairCurr[b], SalemHair_Scale(delta, diff));
+    } else {
+        Vec3f half = SalemHair_Scale(delta, diff * 0.5f);
+        sSalemHairCurr[a] = SalemHair_Add(sSalemHairCurr[a], half);
+        sSalemHairCurr[b] = SalemHair_Sub(sSalemHairCurr[b], half);
+    }
+}
+
+static void SalemHair_BuildJointRotationsFromChain(void) {
+    Vec3s accumulated = { 0, 0, 0 };
+    s32 i;
+
+    for (i = 0; i < SALEM_HAIR_SEGMENT_COUNT; i++) {
+        Vec3f worldDir = SalemHair_Sub(sSalemHairCurr[i + 1], sSalemHairCurr[i]);
+        Vec3f localDir;
+        Vec3s absRot;
+        Vec3s deltaAbs;
+        Vec3s localRot;
+
+        SalemHair_InverseRotateVecByVec3s(&worldDir, &sSalemHairHeadRot, &localDir);
+
+        absRot.x = SalemHair_DirToPitch(localDir);
+        absRot.y = 0;
+        absRot.z = SalemHair_DirToRoll(localDir);
+
+        deltaAbs.x = BINANG_SUB(absRot.x, sSalemHairBaseAbsRot[i].x);
+        deltaAbs.y = 0;
+        deltaAbs.z = BINANG_SUB(absRot.z, sSalemHairBaseAbsRot[i].z);
+
+        localRot.x = BINANG_SUB(deltaAbs.x, accumulated.x);
+        localRot.y = 0;
+        localRot.z = BINANG_SUB(deltaAbs.z, accumulated.z);
+
+        localRot.x = SalemHair_ClampBinang(localRot.x, -SALEM_HAIR_MAX_LOCAL_ROT, SALEM_HAIR_MAX_LOCAL_ROT);
+        localRot.z = SalemHair_ClampBinang(localRot.z, -SALEM_HAIR_MAX_LOCAL_ROT, SALEM_HAIR_MAX_LOCAL_ROT);
+
+        sSalemHairJointTable[sSalemHairJointIndex[i]] = localRot;
+
+        accumulated.x += localRot.x;
+        accumulated.y += localRot.y;
+        accumulated.z += localRot.z;
+    }
+}
+
+static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f playerVel) {
+    Vec3f root;
+    Vec3f rootDelta;
+    Vec3f playerAccel;
+    Vec3f targetMoveForce;
+    Vec3f headForward;
+    Vec3f headRight;
+    Vec3f baseTargetOffset;
+    Vec3f baseTarget;
+    Vec3f headYawForce;
+    s16 headYawDelta;
+    s32 i;
+    s32 iter;
+
+    if (sSalemHairLastUpdateFrame == gameplayFrames) {
+        return;
+    }
+
+    SalemHair_BuildBasePoseData();
+
+    if (!sSalemHairChainInitialized) {
+        SalemHair_InitChainFromHead(playerVel);
+        SalemHair_BuildJointRotationsFromChain();
+        sSalemHairLastUpdateFrame = gameplayFrames;
+        return;
+    }
+
+    root.x = sSalemHairHeadMtx.xw;
+    root.y = sSalemHairHeadMtx.yw;
+    root.z = sSalemHairHeadMtx.zw;
+
+    rootDelta = SalemHair_Sub(root, sSalemHairPrevRoot);
+    if (SalemHair_Length(rootDelta) > SALEM_HAIR_TELEPORT_RESET) {
+        SalemHair_InitChainFromHead(playerVel);
+        SalemHair_BuildJointRotationsFromChain();
+        sSalemHairLastUpdateFrame = gameplayFrames;
+        return;
+    }
+
+    playerAccel = SalemHair_Sub(playerVel, sSalemHairPrevPlayerVel);
+    playerAccel = SalemHair_ClampVecLength(playerAccel, 8.0f);
+    sSalemHairPrevPlayerVel = playerVel;
+
+    headForward.x = Math_SinS(sSalemHairHeadRot.y);
+    headForward.y = 0.0f;
+    headForward.z = Math_CosS(sSalemHairHeadRot.y);
+    headRight.x = Math_CosS(sSalemHairHeadRot.y);
+    headRight.y = 0.0f;
+    headRight.z = -Math_SinS(sSalemHairHeadRot.y);
+
     {
-        Vec3f zeroVel = { 0.0f, 0.0f, 0.0f };
-        SalemHair_VerletInitLimb(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT], sHairRig.actor.world.pos, zeroVel, LIMB_MASS, PINNED);
+        f32 velFwd = (playerVel.x * headForward.x) + (playerVel.z * headForward.z);
+        f32 velSide = (playerVel.x * headRight.x) + (playerVel.z * headRight.z);
+        f32 accelFwd = (playerAccel.x * headForward.x) + (playerAccel.z * headForward.z);
+        f32 accelSide = (playerAccel.x * headRight.x) + (playerAccel.z * headRight.z);
+        f32 forceFwd =
+            -((velFwd * SALEM_HAIR_PLAYER_VEL_FORCE_FWD) + (accelFwd * SALEM_HAIR_PLAYER_ACCEL_FORCE_FWD));
+        f32 forceSide =
+            -((velSide * SALEM_HAIR_PLAYER_VEL_FORCE_SIDE) + (accelSide * SALEM_HAIR_PLAYER_ACCEL_FORCE_SIDE));
+
+        targetMoveForce = SalemHair_Add(SalemHair_Scale(headForward, forceFwd), SalemHair_Scale(headRight, forceSide));
     }
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_pos, &sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_pos);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_vel, &sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel);
 
-    rootPos.x = 0;
-    rootPos.y = 0;
-    rootPos.z = 0;
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_POS_LIMB], &rootPos);
-    Math_Vec3s_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].default_jointPos, &rootPos);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_ROT_LIMB], &rootRot);
+    targetMoveForce.y = 0.0f;
+    targetMoveForce = SalemHair_ClampVecLength(targetMoveForce, SALEM_HAIR_PLAYER_FORCE_MAX);
+    sSalemHairMoveForce = SalemHair_Add(SalemHair_Scale(sSalemHairMoveForce, SALEM_HAIR_PLAYER_FORCE_SMOOTH),
+                                        SalemHair_Scale(targetMoveForce, 1.0f - SALEM_HAIR_PLAYER_FORCE_SMOOTH));
 
-    for (i = SALEM_HAIR_BODYPART_CONTROL; i < SALEM_HAIR_BODYPART_MAX; i++) {
-        Vec3s rotatedOffset = { 0, 0, 0 };
-        Vec3f transform = { 0.0f, 0.0f, 0.0f };
+    headYawDelta = BINANG_SUB(sSalemHairHeadRot.y, sSalemHairPrevHeadYaw);
+    sSalemHairPrevHeadYaw = sSalemHairHeadRot.y;
+    headYawForce.x = Math_CosS(sSalemHairHeadRot.y) * (-((f32)headYawDelta) * SALEM_HAIR_HEAD_YAW_FORCE);
+    headYawForce.y = 0.0f;
+    headYawForce.z = -Math_SinS(sSalemHairHeadRot.y) * (-((f32)headYawDelta) * SALEM_HAIR_HEAD_YAW_FORCE);
+    headYawForce = SalemHair_ClampVecLength(headYawForce, SALEM_HAIR_HEAD_YAW_FORCE_MAX);
+    SalemHair_RotateVecByVec3s(&sSalemHairBaseSegmentLocal[0], &sSalemHairHeadRot, &baseTargetOffset);
+    baseTarget = SalemHair_Add(root, baseTargetOffset);
 
-        Math_Vec3s_Copy(&sPhysLimbs[i].default_jointPos, (Vec3s*)&defaultJointPos[i]);
-        SalemHair_Vec3sRotate(&sPhysLimbs[i].default_jointPos, &sHeadRotate, &rotatedOffset);
-        SalemHair_Vec3sScaleToVec3f(&rotatedOffset, sHairRig.actor.scale.x, &transform);
-        Math_Vec3f_Sum(&sHairRig.bodyPartsPos[i - 1], &transform, &sHairRig.bodyPartsPos[i]);
+    for (i = 1; i < SALEM_HAIR_NODE_COUNT; i++) {
+        f32 chainT = (f32)(i - 1) / (f32)(SALEM_HAIR_NODE_COUNT - 2);
+        f32 rootFollow = (i == 1) ? 0.0f : (SALEM_HAIR_ROOT_INERTIA * (0.35f + (0.65f * chainT)));
+        Vec3f velocity = SalemHair_Sub(sSalemHairCurr[i], sSalemHairPrev[i]);
+        Vec3f moveBias = SalemHair_Scale(sSalemHairMoveForce, 0.10f + (0.70f * chainT));
+        Vec3f yawBias = SalemHair_Scale(headYawForce, 0.02f + (0.08f * chainT));
+        f32 swayPhase = ((f32)gameplayFrames * SALEM_HAIR_IDLE_SWAY_SPEED) + ((f32)i * 0.85f);
+        Vec3f swayBias = SalemHair_Add(
+            SalemHair_Scale(headRight, sinf(swayPhase) * (SALEM_HAIR_IDLE_SWAY_SIDE * chainT)),
+            SalemHair_Scale(headForward, cosf(swayPhase * 0.65f) * (SALEM_HAIR_IDLE_SWAY_FWD * chainT)));
 
-        if (i == SALEM_HAIR_BODYPART_CONTROL) {
-            Vec3f noVelocity = { 0.0f, 0.0f, 0.0f };
-            SalemHair_VerletInitLimb(&sPhysLimbs[i], sHairRig.bodyPartsPos[i], noVelocity, LIMB_MASS, NOT_PINNED);
-        } else {
-            Vec3f noVelocity = { 0.0f, 0.0f, 0.0f };
-            SalemHair_VerletInitLimb(&sPhysLimbs[i], sHairRig.bodyPartsPos[i], noVelocity, LIMB_MASS, NOT_PINNED);
+        velocity = SalemHair_ClampVecLength(velocity, SALEM_HAIR_MAX_VELOCITY);
+
+        if (i == 1) {
+            moveBias = SalemHair_Scale(sSalemHairMoveForce, 0.12f);
+            yawBias = SalemHair_Scale(headYawForce, 0.03f);
+        }
+
+        sSalemHairPrev[i] = sSalemHairCurr[i];
+        sSalemHairCurr[i] = SalemHair_Add(sSalemHairCurr[i], SalemHair_Scale(velocity, SALEM_HAIR_DAMPING));
+        sSalemHairCurr[i] = SalemHair_Add(sSalemHairCurr[i], SalemHair_Scale(rootDelta, rootFollow));
+        sSalemHairCurr[i] = SalemHair_Add(sSalemHairCurr[i], moveBias);
+        sSalemHairCurr[i] = SalemHair_Add(sSalemHairCurr[i], yawBias);
+        sSalemHairCurr[i] = SalemHair_Add(sSalemHairCurr[i], swayBias);
+        sSalemHairCurr[i].y += SALEM_HAIR_GRAVITY * (1.0f + (0.12f * i));
+
+        if (i == 1) {
+            sSalemHairCurr[1] = SalemHair_Add(SalemHair_Scale(sSalemHairCurr[1], 1.0f - SALEM_HAIR_BONE001_ANCHOR),
+                                              SalemHair_Scale(baseTarget, SALEM_HAIR_BONE001_ANCHOR));
         }
     }
 
-    for (i = 0; i < SALEM_HAIR_BONE_MAX; i++) {
-        SalemHair_VerletInitBone(&sPhysBones[i], &sPhysLimbs[i], &sPhysLimbs[i + 1]);
+    for (iter = 0; iter < SALEM_HAIR_CONSTRAINT_ITERS; iter++) {
+        sSalemHairCurr[0] = root;
+        SalemHair_ConstrainSegment(0, 1, sSalemHairSegmentLength[0], true);
+        SalemHair_ConstrainSegment(1, 2, sSalemHairSegmentLength[1], false);
+        SalemHair_ConstrainSegment(2, 3, sSalemHairSegmentLength[2], false);
     }
 
-    SalemHair_ForceRootLock();
-}
+    sSalemHairCurr[0] = root;
+    sSalemHairPrev[0] = root;
+    sSalemHairPrevRoot = root;
 
-static void SalemHair_UpdateBodyPartsPos(Player* player, Vec3f applyForce) {
-    s32 i;
-    Vec3s rootPos = { 0, 0, 0 };
-    Vec3s rootRot = { 0, 0, 0 };
-
-    Math_Vec3f_Copy(&sHairRig.actor.prevPos, &player->actor.prevPos);
-    Math_Vec3f_Copy(&sHairRig.actor.world.pos, &sHeadGlobalPos);
-    Math_Vec3s_Copy(&sHairRig.actor.shape.rot, &sHeadRotate);
-    Math_Vec3s_Copy(&sHairRig.actor.world.rot, &sHeadRotate);
-
-    Math_Vec3f_Copy(&sHairRig.bodyPartsPos[SALEM_HAIR_BODYPART_ROOT], &sHeadGlobalPos);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_pos, &sHairRig.actor.world.pos);
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_pos, &sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_pos);
-    sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel.x = 0.0f;
-    sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel.y = 0.0f;
-    sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel.z = 0.0f;
-    Math_Vec3f_Copy(&sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].prev_vel, &sPhysLimbs[SALEM_HAIR_BODYPART_ROOT].curr_vel);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_POS_LIMB], &rootPos);
-
-    rootRot.x = 0;
-    rootRot.y = 0;
-    rootRot.z = 0;
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_ROT_LIMB], &rootRot);
-
-    for (i = SALEM_HAIR_BODYPART_CONTROL; i < SALEM_HAIR_BODYPART_MAX; i++) {
-        if (sPhysLimbs[i].pinned == 1) {
-            Vec3s rotatedOffset = { 0, 0, 0 };
-            Vec3f transform = { 0.0f, 0.0f, 0.0f };
-
-            Math_Vec3f_Copy(&sPhysLimbs[i].prev_pos, &sPhysLimbs[i].curr_pos);
-            Math_Vec3f_Copy(&sPhysLimbs[i].prev_vel, &sPhysLimbs[i].curr_vel);
-
-            SalemHair_Vec3sRotate(&sPhysLimbs[i].default_jointPos, &sHairRig.actor.shape.rot, &rotatedOffset);
-            SalemHair_Vec3sScaleToVec3f(&rotatedOffset, sHairRig.actor.scale.x, &transform);
-
-            Math_Vec3f_Sum(&sHairRig.bodyPartsPos[i - 1], &transform, &sHairRig.bodyPartsPos[i]);
-            Math_Vec3f_Copy(&sPhysLimbs[i].curr_pos, &sHairRig.bodyPartsPos[i]);
-            Math_Vec3f_Copy(&sPhysLimbs[i].curr_vel, &player->actor.velocity);
-        } else {
-            Vec3f playerVel = { 0.0f, 0.0f, 0.0f };
-
-            Math_Vec3f_Copy(&playerVel, &player->actor.velocity);
-            if (player->actor.bgCheckFlags & BGCHECKFLAG_GROUND) {
-                playerVel.y = 0.0f;
-            }
-
-            SalemHair_VerletLimbUpdatePos(&sPhysLimbs[i], &applyForce, &playerVel);
-        }
-    }
-
-    for (i = 0; i < SALEM_HAIR_BONE_MAX; i++) {
-        SalemHair_VerletBoneConstraint(&sPhysBones[i]);
-    }
-
-    SalemHair_ForceRootLock();
-}
-
-static void SalemHair_RotateJoints(void) {
-    Vec3s offsetRotation = { 0, 0, 0 };
-    s32 i;
-
-    for (i = SALEM_HAIR_BONE_CONTROL_HAIR1; i < SALEM_HAIR_BONE_MAX; i++) {
-        if ((sPhysBones[i].limb_a->pinned == 1) && (sPhysBones[i].limb_b->pinned == 1)) {
-            continue;
-        } else {
-            Vec3f boneDirection = { 0.0f, 0.0f, 0.0f };
-            Vec3f origin = { 0.0f, 0.0f, 0.0f };
-            Vec3s actorRotWithOffset = { 0, 0, 0 };
-            Vec3s currRotate = { 0, 0, 0 };
-
-            Math_Vec3f_Diff(&sPhysBones[i].limb_b->curr_pos, &sPhysBones[i].limb_a->curr_pos, &boneDirection);
-            Math_Vec3s_Copy(&actorRotWithOffset, &sHairRig.actor.shape.rot);
-            SalemHair_Vec3fInverseRotate(&boneDirection, &actorRotWithOffset, &boneDirection);
-
-            currRotate.x = SalemHair_Vec3fPitch(&boneDirection, &origin);
-            currRotate.y = 0;
-            currRotate.z = SalemHair_Vec3fRoll(&origin, &boneDirection);
-
-            Vec3s applyRot = { 0, 0, 0 };
-
-            SalemHair_Vec3sDiff(&currRotate, &offsetRotation, &applyRot);
-            Math_Vec3s_Copy(&sHairRig.jointTable[i + 1], &applyRot);
-            SalemHair_Vec3sSum(&offsetRotation, &applyRot, &offsetRotation);
-        }
-    }
+    SalemHair_BuildJointRotationsFromChain();
+    sSalemHairLastUpdateFrame = gameplayFrames;
 }
 
 static void SalemHair_DrawRig(PlayState* play) {
-    static const Vec3f limbJointPos[5] = {
-        { 0.0f, 0.0f, 0.0f },
-        { 0.0f, 0.0f, 0.0f },
-        { -800.0f, -250.0f, 0.0f },
-        { -1100.0f, -300.0f, 0.0f },
-        { -1200.0f, -300.0f, 0.0f },
-    };
-    GraphicsContext* __gfxCtx = play->state.gfxCtx;
-    Mtx* limbMatrices = GRAPH_ALLOC(play->state.gfxCtx, 5 * sizeof(Mtx));
-    Gfx* gfx;
-    Vec3f pos = { 0.0f, 0.0f, 0.0f };
-    Vec3s rot = { 0, 0, 0 };
-
-    if (limbMatrices == NULL) {
-        return;
-    }
-
-    gSPSegment(POLY_OPA_DISP++, 0x0D, limbMatrices);
-
     Matrix_Push();
-    Matrix_Put(&sHeadMtx);
-
-    rot.x = 0;
-    rot.y = 0;
-    rot.z = 0;
-    Matrix_TranslateRotateZYX(&pos, &rot);
-    gfx = POLY_OPA_DISP;
-    gSPMatrix(&gfx[0], Matrix_ToMtx(&limbMatrices[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(&gfx[1], gSalemFierceDeityHairSkel_bone000_gLinkFierceDeityHairRootLimb_mesh_layer_Opaque);
-    POLY_OPA_DISP = &gfx[2];
-
-    Matrix_Push();
-    Math_Vec3f_Copy(&pos, (Vec3f*)&limbJointPos[1]);
-    Math_Vec3s_Copy(&rot, &sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE001_GLINKFIERCEDEITYHAIRCONTROLLIMB_LIMB]);
-    rot.x += CONTROL_X_ROT_FIX;
-    Matrix_TranslateRotateZYX(&pos, &rot);
-    gfx = POLY_OPA_DISP;
-    gSPMatrix(&gfx[0], Matrix_ToMtx(&limbMatrices[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(&gfx[1], gSalemFierceDeityHairSkel_bone001_gLinkFierceDeityHairControlLimb_mesh_layer_Opaque);
-    POLY_OPA_DISP = &gfx[2];
-
-    Matrix_Push();
-    Math_Vec3f_Copy(&pos, (Vec3f*)&limbJointPos[2]);
-    Math_Vec3s_Copy(&rot, &sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE002_GLINKFIERCEDEITYHAIR1LIMB_LIMB]);
-    Matrix_TranslateRotateZYX(&pos, &rot);
-    gfx = POLY_OPA_DISP;
-    gSPMatrix(&gfx[0], Matrix_ToMtx(&limbMatrices[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(&gfx[1], gSalemFierceDeityHairSkel_bone002_gLinkFierceDeityHair1Limb_mesh_layer_Opaque);
-    POLY_OPA_DISP = &gfx[2];
-
-    Matrix_Push();
-    Math_Vec3f_Copy(&pos, (Vec3f*)&limbJointPos[3]);
-    Math_Vec3s_Copy(&rot, &sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE003_GLINKFIERCEDEITYHAIR2LIMB_LIMB]);
-    Matrix_TranslateRotateZYX(&pos, &rot);
-    gfx = POLY_OPA_DISP;
-    gSPMatrix(&gfx[0], Matrix_ToMtx(&limbMatrices[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(&gfx[1], gSalemFierceDeityHairSkel_bone003_gLinkFierceDeityHair2Limb_mesh_layer_Opaque);
-    POLY_OPA_DISP = &gfx[2];
-
-    Matrix_Push();
-    Math_Vec3f_Copy(&pos, (Vec3f*)&limbJointPos[4]);
-    Math_Vec3s_Copy(&rot, &sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE004_GLINKFIERCEDEITYHAIR3LIMB_LIMB]);
-    Matrix_TranslateRotateZYX(&pos, &rot);
-    gfx = POLY_OPA_DISP;
-    gSPMatrix(&gfx[0], Matrix_ToMtx(&limbMatrices[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(&gfx[1], gSalemFierceDeityHairSkel_bone004_gLinkFierceDeityHair3Limb_mesh_layer_Opaque);
-    POLY_OPA_DISP = &gfx[2];
-    Matrix_Pop();
-
-    Matrix_Pop();
-    Matrix_Pop();
-    Matrix_Pop();
+    Matrix_Put(&sSalemHairHeadMtx);
+    SkelAnime_DrawFlexOpa(play, gSalemFierceDeityHairSkel.sh.segment, sSalemHairJointTable,
+                          gSalemFierceDeityHairSkel.dListCount, NULL, NULL, NULL);
     Matrix_Pop();
 }
 
-static void SalemHair_InitRig(PlayState* play, Player* player) {
-    Vec3s zeroRot = { 0, 0, 0 };
-
-    (void)play;
-    Actor_SetScale(&sHairRig.actor, 0.01f);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_POS_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE000_GLINKFIERCEDEITYHAIRROOTLIMB_ROT_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE001_GLINKFIERCEDEITYHAIRCONTROLLIMB_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE002_GLINKFIERCEDEITYHAIR1LIMB_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE003_GLINKFIERCEDEITYHAIR2LIMB_LIMB], &zeroRot);
-    Math_Vec3s_Copy(&sHairRig.jointTable[GSALEMFIERCEDEITYHAIRSKEL_BONE004_GLINKFIERCEDEITYHAIR3LIMB_LIMB], &zeroRot);
-    SalemHair_VerletInitPhysPlayer(&sPhysPlayer, player);
-    SalemHair_SetDefaultBodyPartsPos(player);
-    sHairRigInitialized = 1;
+void SalemFierceDeityHairPhysics_Init(void) {
+    sSalemHairEnabled = false;
+    sSalemHairModelHandle = 0;
+    sSalemHairBaseReady = false;
+    SalemHair_ResetJointTable();
+    SalemHair_ResetChainState();
 }
 
-RECOMP_HOOK("Player_PostLimbDrawGameplay")
-void SalemHair_on_Player_PostLimbDrawGameplay(PlayState* play, s32 limbIndex, Gfx** dList1, Gfx** dList2, Vec3s* rot,
-                                              Actor* actor) {
-    Player* player = GET_PLAYER(play);
-    MtxF* mtx;
-
-    if (sLastPlay != play) {
-        sLastPlay = play;
-        sHasHeadPose = 0;
-        sHairWasActive = 0;
-        sHairRigInitialized = 0;
+void SalemFierceDeityHairPhysics_SetEnabled(bool enabled) {
+    sSalemHairEnabled = enabled;
+    if (!enabled) {
+        SalemHair_ResetJointTable();
+        SalemHair_ResetChainState();
     }
-
-    if (actor != &player->actor) {
-        return;
-    }
-
-    if (!SalemHair_IsModelActive(player)) {
-        return;
-    }
-
-    if (limbIndex != PLAYER_LIMB_HEAD) {
-        return;
-    }
-
-    sLastPlay = play;
-    OPEN_DISPS(play->state.gfxCtx);
-    Matrix_Push();
-    mtx = Matrix_GetCurrent();
-    sHeadGlobalPos.x = mtx->xw;
-    sHeadGlobalPos.y = mtx->yw;
-    sHeadGlobalPos.z = mtx->zw;
-    Matrix_MtxFCopy(&sHeadMtx, mtx);
-    Matrix_MtxFToYXZRot(mtx, &sHeadRotate, 1);
-    Matrix_Pop();
-    CLOSE_DISPS(play->state.gfxCtx);
-    sHasHeadPose = 1;
 }
 
-RECOMP_HOOK_RETURN("Player_Draw")
-void SalemHair_on_Player_Draw_Return(void) {
-    Player* player;
-    Vec3f netForce = { 0.0f, 0.0f, 0.0f };
-
-    if ((sLastPlay == NULL) || !sHasHeadPose) {
-        sHairWasActive = 0;
-        sHasHeadPose = 0;
-        return;
-    }
-
-    player = GET_PLAYER(sLastPlay);
-    if (!SalemHair_IsModelActive(player)) {
-        sHairWasActive = 0;
-        sHasHeadPose = 0;
-        return;
-    }
-
-    if (!sHairRigInitialized) {
-        SalemHair_InitRig(sLastPlay, player);
-    }
-
-    if (!sHairWasActive) {
-        SalemHair_VerletInitPhysPlayer(&sPhysPlayer, player);
-        SalemHair_SetDefaultBodyPartsPos(player);
-        sHairWasActive = 1;
-    }
-
-    SalemHair_VerletUpdatePhysPlayerVelocity(&sPhysPlayer, player);
-    SalemHair_VerletCalcNetForce(&sPhysPlayer, GRAVITY, &netForce);
-    SalemHair_UpdateBodyPartsPos(player, netForce);
-    SalemHair_RotateJoints();
-    SalemHair_ForceRootLock();
-
-    OPEN_DISPS(sLastPlay->state.gfxCtx);
-    Gfx_SetupDL25_Opa(sLastPlay->state.gfxCtx);
-    func_80122868(sLastPlay, player);
-    SalemHair_DrawRig(sLastPlay);
-    if (player->invincibilityTimer > 0 || gSaveContext.jinxTimer != 0) {
-        POLY_OPA_DISP = Play_SetFog(sLastPlay, POLY_OPA_DISP);
-    }
-    CLOSE_DISPS(sLastPlay->state.gfxCtx);
-    sHasHeadPose = 0;
+bool SalemFierceDeityHairPhysics_IsEnabled(void) {
+    return sSalemHairEnabled;
 }
 
 void SalemFierceDeityHairPhysics_SetModelHandle(PlayerModelManagerHandle handle) {
-    sSalemFierceDeityModelHandle = handle;
+    sSalemHairModelHandle = handle;
+    SalemFierceDeityHairPhysics_SetEnabled(handle != 0);
+}
+
+void SalemFierceDeityHairPhysics_OnHeadLimbDraw(PlayState* play, Player* player) {
+    MtxF headMtx;
+
+    Matrix_Get(&headMtx);
+
+    sSalemHairHeadMtx = headMtx;
+
+    f32 sx = sqrtf(headMtx.xx*headMtx.xx + headMtx.yx*headMtx.yx + headMtx.zx*headMtx.zx);
+    f32 sy = sqrtf(headMtx.xy*headMtx.xy + headMtx.yy*headMtx.yy + headMtx.zy*headMtx.zy);
+    f32 sz = sqrtf(headMtx.xz*headMtx.xz + headMtx.yz*headMtx.yz + headMtx.zz*headMtx.zz);
+    if (sx > 0.0001f) { headMtx.xx /= sx; headMtx.yx /= sx; headMtx.zx /= sx; }
+    if (sy > 0.0001f) { headMtx.xy /= sy; headMtx.yy /= sy; headMtx.zy /= sy; }
+    if (sz > 0.0001f) { headMtx.xz /= sz; headMtx.yz /= sz; headMtx.zz /= sz; }
+
+    Matrix_MtxFToYXZRot(&headMtx, &sSalemHairHeadRot, 0);
+    sSalemHairHasHeadMtx = true;
+    sSalemHairHeadMtxFrame = play->gameplayFrames;
+}
+
+RECOMP_HOOK("Player_PostLimbDrawGameplay")
+void SalemFierceDeityHairPhysics_PlayerPostLimbDrawHook(PlayState* play, s32 limbIndex, Gfx** dList1, Gfx** dList2,
+                                                         Vec3s* rot, Actor* actor) {
+    Player* player;
+
+    (void)dList1;
+    (void)dList2;
+    (void)rot;
+
+    if ((actor == NULL) || (actor->id != ACTOR_PLAYER)) {
+        return;
+    }
+
+    player = (Player*)actor;
+    if (!SalemHair_ShouldDraw(player)) {
+        SalemHair_ResetChainState();
+        return;
+    }
+
+    if (limbIndex == PLAYER_LIMB_HEAD) {
+        Vec3f playerVel = SalemHair_GetPlayerVelocity(player);
+
+        SalemFierceDeityHairPhysics_OnHeadLimbDraw(play, player);
+        SalemHair_UpdatePhysicsOncePerFrame(play->gameplayFrames, playerVel);
+        return;
+    }
+
+    if ((limbIndex == PLAYER_LIMB_TORSO) && sSalemHairHasHeadMtx && (sSalemHairHeadMtxFrame == play->gameplayFrames)) {
+
+        OPEN_DISPS(play->state.gfxCtx);
+        Gfx_SetupDL25_Opa(play->state.gfxCtx);
+        func_80122868(play, player);
+        Matrix_Push();
+        SalemHair_DrawRig(play);
+        Matrix_Pop();
+        if ((player->invincibilityTimer > 0) || (gSaveContext.jinxTimer != 0)) {
+            POLY_OPA_DISP = Play_SetFog(play, POLY_OPA_DISP);
+        }
+        CLOSE_DISPS(play->state.gfxCtx);
+        sSalemHairHasHeadMtx = false;
+    }
 }

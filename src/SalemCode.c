@@ -30,7 +30,6 @@
 #include "gSalemZoraShieldDL.h"
 #include "gSalemZoraMagicBarrierDL.h"
 #include "gSalemFierceDeitySkel.h"
-#include "gSalemFierceDeityHairSkel.h"
 #include "gSalemFierceDeityHandSkel.h"
 #include "gSalemFierceDeityHandClosedSkel.h"
 #include "gSalemFierceDeityHandBottleSkel.h"
@@ -322,7 +321,6 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerZora() {
 
 PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
     PlayerModelManagerHandle h = PLAYERMODELMANAGER_REGISTER_MODEL("mmfdsalem", PMM_MODEL_TYPE_FIERCE_DEITY);
-    SalemFierceDeityHairPhysics_SetModelHandle(h);
 
     PlayerModelManager_setAuthor(h, "Jameriquiah");
     PlayerModelManager_setDisplayName(h, "Fierce Deity Salem");
@@ -336,6 +334,8 @@ PLAYERMODELMANAGER_CALLBACK_REGISTER_MODELS void registerFierceDeity() {
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY, gSalemFierceDeityMaskDL);
     PlayerModelManager_setDisplayList(h, PMM_DL_MASK_FIERCE_DEITY_SCREAM, gSalemFierceDeityScreamingMaskDL);
 
+    SalemFierceDeityHairPhysics_Init();
+    SalemFierceDeityHairPhysics_SetModelHandle(h);
     PlayerModelManager_setSkeleton(h, &gSalemFierceDeitySkel);
 }
 
