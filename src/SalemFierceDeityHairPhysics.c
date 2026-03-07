@@ -19,10 +19,11 @@
 #define SALEM_HAIR_MAX_LOCAL_ROT 0x5000
 #define SALEM_HAIR_PLAYER_VEL_FORCE_FWD 9.0f
 #define SALEM_HAIR_PLAYER_ACCEL_FORCE_FWD 15.0f
-#define SALEM_HAIR_PLAYER_VEL_FORCE_SIDE 6.0f
-#define SALEM_HAIR_PLAYER_ACCEL_FORCE_SIDE 9.0f
 #define SALEM_HAIR_PLAYER_FORCE_SMOOTH 0.52f
+#define SALEM_HAIR_PLAYER_FORCE_SMOOTH_MOVING 0.30f
 #define SALEM_HAIR_PLAYER_FORCE_MAX 90.0f
+#define SALEM_HAIR_PLAYER_SPEED_MOVING 0.10f
+#define SALEM_HAIR_BONE001_ANCHOR_MOVING 0.20f
 #define SALEM_HAIR_HEAD_YAW_FORCE 0.0028f
 #define SALEM_HAIR_HEAD_YAW_FORCE_MAX 70.0f
 #define SALEM_HAIR_BONE001_ANCHOR 0.40f
@@ -41,7 +42,9 @@ static Vec3s sSalemHairHeadRot;
 static s16 sSalemHairPrevHeadYaw;
 static Vec3f sSalemHairPrevRoot;
 static Vec3f sSalemHairPrevPlayerVel;
+static Vec3f sSalemHairPrevPlayerPos;
 static Vec3f sSalemHairMoveForce;
+static bool sSalemHairPrevPlayerPosValid;
 static Vec3f sSalemHairCurr[SALEM_HAIR_NODE_COUNT];
 static Vec3f sSalemHairPrev[SALEM_HAIR_NODE_COUNT];
 static f32 sSalemHairSegmentLength[SALEM_HAIR_SEGMENT_COUNT];
@@ -202,7 +205,9 @@ static void SalemHair_ResetChainState(void) {
     sSalemHairLastUpdateFrame = 0xFFFFFFFF;
     sSalemHairPrevHeadYaw = 0;
     sSalemHairPrevPlayerVel = zero;
+    sSalemHairPrevPlayerPos = zero;
     sSalemHairMoveForce = zero;
+    sSalemHairPrevPlayerPosValid = false;
 }
 
 static bool SalemHair_ShouldDraw(Player* player) {
@@ -226,7 +231,21 @@ static bool SalemHair_ShouldDraw(Player* player) {
 }
 
 static Vec3f SalemHair_GetPlayerVelocity(Player* player) {
-    Vec3f vel = SalemHair_Sub(player->actor.world.pos, player->actor.prevPos);
+    Vec3f vel;
+
+    if (!sSalemHairPrevPlayerPosValid) {
+        sSalemHairPrevPlayerPos = player->actor.world.pos;
+        sSalemHairPrevPlayerPosValid = true;
+    }
+
+    vel = SalemHair_Sub(player->actor.world.pos, sSalemHairPrevPlayerPos);
+    sSalemHairPrevPlayerPos = player->actor.world.pos;
+
+    if (((fabsf(vel.x) + fabsf(vel.z)) < 0.01f) && (fabsf(player->actor.speed) > 0.01f)) {
+        vel.x = Math_SinS(player->actor.world.rot.y) * player->actor.speed;
+        vel.z = Math_CosS(player->actor.world.rot.y) * player->actor.speed;
+    }
+
     vel.y = player->actor.velocity.y;
     return vel;
 }
@@ -313,7 +332,7 @@ static void SalemHair_BuildJointRotationsFromChain(void) {
     }
 }
 
-static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f playerVel) {
+static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f playerVel, f32 playerSpeed) {
     Vec3f root;
     Vec3f rootDelta;
     Vec3f playerAccel;
@@ -323,6 +342,8 @@ static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f player
     Vec3f baseTargetOffset;
     Vec3f baseTarget;
     Vec3f headYawForce;
+    f32 bone001Anchor;
+    bool isMoving;
     s16 headYawDelta;
     s32 i;
     s32 iter;
@@ -363,23 +384,19 @@ static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f player
     headRight.y = 0.0f;
     headRight.z = -Math_SinS(sSalemHairHeadRot.y);
 
-    {
-        f32 velFwd = (playerVel.x * headForward.x) + (playerVel.z * headForward.z);
-        f32 velSide = (playerVel.x * headRight.x) + (playerVel.z * headRight.z);
-        f32 accelFwd = (playerAccel.x * headForward.x) + (playerAccel.z * headForward.z);
-        f32 accelSide = (playerAccel.x * headRight.x) + (playerAccel.z * headRight.z);
-        f32 forceFwd =
-            -((velFwd * SALEM_HAIR_PLAYER_VEL_FORCE_FWD) + (accelFwd * SALEM_HAIR_PLAYER_ACCEL_FORCE_FWD));
-        f32 forceSide =
-            -((velSide * SALEM_HAIR_PLAYER_VEL_FORCE_SIDE) + (accelSide * SALEM_HAIR_PLAYER_ACCEL_FORCE_SIDE));
-
-        targetMoveForce = SalemHair_Add(SalemHair_Scale(headForward, forceFwd), SalemHair_Scale(headRight, forceSide));
-    }
-
+    targetMoveForce = SalemHair_Add(SalemHair_Scale(playerVel, -SALEM_HAIR_PLAYER_VEL_FORCE_FWD),
+                                    SalemHair_Scale(playerAccel, -SALEM_HAIR_PLAYER_ACCEL_FORCE_FWD));
     targetMoveForce.y = 0.0f;
     targetMoveForce = SalemHair_ClampVecLength(targetMoveForce, SALEM_HAIR_PLAYER_FORCE_MAX);
-    sSalemHairMoveForce = SalemHair_Add(SalemHair_Scale(sSalemHairMoveForce, SALEM_HAIR_PLAYER_FORCE_SMOOTH),
-                                        SalemHair_Scale(targetMoveForce, 1.0f - SALEM_HAIR_PLAYER_FORCE_SMOOTH));
+
+    isMoving = fabsf(playerSpeed) > SALEM_HAIR_PLAYER_SPEED_MOVING;
+    sSalemHairMoveForce =
+        SalemHair_Add(SalemHair_Scale(sSalemHairMoveForce,
+                                      isMoving ? SALEM_HAIR_PLAYER_FORCE_SMOOTH_MOVING : SALEM_HAIR_PLAYER_FORCE_SMOOTH),
+                      SalemHair_Scale(targetMoveForce,
+                                      isMoving ? (1.0f - SALEM_HAIR_PLAYER_FORCE_SMOOTH_MOVING)
+                                               : (1.0f - SALEM_HAIR_PLAYER_FORCE_SMOOTH)));
+    bone001Anchor = isMoving ? SALEM_HAIR_BONE001_ANCHOR_MOVING : SALEM_HAIR_BONE001_ANCHOR;
 
     headYawDelta = BINANG_SUB(sSalemHairHeadRot.y, sSalemHairPrevHeadYaw);
     sSalemHairPrevHeadYaw = sSalemHairHeadRot.y;
@@ -393,6 +410,10 @@ static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f player
     for (i = 1; i < SALEM_HAIR_NODE_COUNT; i++) {
         f32 chainT = (f32)(i - 1) / (f32)(SALEM_HAIR_NODE_COUNT - 2);
         f32 rootFollow = (i == 1) ? 0.0f : (SALEM_HAIR_ROOT_INERTIA * (0.35f + (0.65f * chainT)));
+
+        if (isMoving) {
+            rootFollow = 0.0f;
+        }
         Vec3f velocity = SalemHair_Sub(sSalemHairCurr[i], sSalemHairPrev[i]);
         Vec3f moveBias = SalemHair_Scale(sSalemHairMoveForce, 0.10f + (0.70f * chainT));
         Vec3f yawBias = SalemHair_Scale(headYawForce, 0.02f + (0.08f * chainT));
@@ -401,11 +422,18 @@ static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f player
             SalemHair_Scale(headRight, sinf(swayPhase) * (SALEM_HAIR_IDLE_SWAY_SIDE * chainT)),
             SalemHair_Scale(headForward, cosf(swayPhase * 0.65f) * (SALEM_HAIR_IDLE_SWAY_FWD * chainT)));
 
+        if (isMoving) {
+            yawBias = SalemHair_Scale(yawBias, 0.20f);
+            swayBias.x = 0.0f;
+            swayBias.y = 0.0f;
+            swayBias.z = 0.0f;
+        }
+
         velocity = SalemHair_ClampVecLength(velocity, SALEM_HAIR_MAX_VELOCITY);
 
         if (i == 1) {
             moveBias = SalemHair_Scale(sSalemHairMoveForce, 0.12f);
-            yawBias = SalemHair_Scale(headYawForce, 0.03f);
+            yawBias = SalemHair_Scale(headYawForce, isMoving ? 0.006f : 0.03f);
         }
 
         sSalemHairPrev[i] = sSalemHairCurr[i];
@@ -417,8 +445,8 @@ static void SalemHair_UpdatePhysicsOncePerFrame(u32 gameplayFrames, Vec3f player
         sSalemHairCurr[i].y += SALEM_HAIR_GRAVITY * (1.0f + (0.12f * i));
 
         if (i == 1) {
-            sSalemHairCurr[1] = SalemHair_Add(SalemHair_Scale(sSalemHairCurr[1], 1.0f - SALEM_HAIR_BONE001_ANCHOR),
-                                              SalemHair_Scale(baseTarget, SALEM_HAIR_BONE001_ANCHOR));
+            sSalemHairCurr[1] = SalemHair_Add(SalemHair_Scale(sSalemHairCurr[1], 1.0f - bone001Anchor),
+                                              SalemHair_Scale(baseTarget, bone001Anchor));
         }
     }
 
@@ -512,7 +540,7 @@ void SalemFierceDeityHairPhysics_PlayerPostLimbDrawHook(PlayState* play, s32 lim
         Vec3f playerVel = SalemHair_GetPlayerVelocity(player);
 
         SalemFierceDeityHairPhysics_OnHeadLimbDraw(play, player);
-        SalemHair_UpdatePhysicsOncePerFrame(play->gameplayFrames, playerVel);
+        SalemHair_UpdatePhysicsOncePerFrame(play->gameplayFrames, playerVel, player->actor.speed);
         return;
     }
 
